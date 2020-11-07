@@ -8,14 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 using API_SERVER.Controllers;
 using Microsoft.EntityFrameworkCore;
 using API_SERVER.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace API_SERVER.Controllers
 {
-    [Route("/")]
+    [Route("/test")]
     [ApiController]
     public class TESTING_UserDataController : ControllerBase
     {
-        private UsersDbContext usersDbContext { get; set; }
         private UsersDbContext context { get; set; }
 
         private DbSet<User> UserData
@@ -31,10 +32,13 @@ namespace API_SERVER.Controllers
             context = new UsersDbContext(options);
         }
 
-        [HttpGet]
-        public async Task<string> Get()
+        [HttpGet("{upload}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> Get(string upload)
         {
-            return UserData.FirstOrDefault().UserID.ToString();
+
+            return Unauthorized(JsonSerializer.Serialize(UserData.FirstOrDefault()));
         }
     }
 }

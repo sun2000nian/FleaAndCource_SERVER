@@ -11,6 +11,11 @@ namespace API_SERVER.Models
     {
         [Required]
         [Key]
-        public string UserID { get; set; }
+        public Int64 UserID { get; set; }
+
+        public string userType { get; set; }
+        public string gender { get; set; }
+        public string name { get; set; }
+
     }
 }

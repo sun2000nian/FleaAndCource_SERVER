@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\API_SERVER",
+    "\\API_SERVER\\API_SERVER"
   ],
+  "SelectedNode": "\\API_SERVER\\API_SERVER\\Startup.cs",
   "PreviewInSolutionExplorer": false
 }
