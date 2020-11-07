@@ -7,20 +7,19 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Data
 {
-    public class UsersDbContext:DbContext
+    public class UsersAuthorizationDbContext:DbContext
     {
-        public UsersDbContext(DbContextOptions<UsersDbContext> options)
+        public UsersAuthorizationDbContext(DbContextOptions<UsersAuthorizationDbContext> options)
             : base(options)
         {
 
         }
 
-        public DbSet<User> UserData { get; set; }
+        public DbSet<UserAuthorizationData> UserAuthorizationData { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("UserData");
-
+            modelBuilder.Entity<UserAuthorizationData>().ToTable("UserAuthorizationData");
             base.OnModelCreating(modelBuilder);
         }
     }

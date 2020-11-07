@@ -17,19 +17,19 @@ namespace API_SERVER.Controllers
     [ApiController]
     public class TESTING_UserDataController : ControllerBase
     {
-        private UsersDbContext context { get; set; }
+        private UsersAuthorizationDbContext context { get; set; }
 
-        private DbSet<User> UserData
+        private DbSet<UserAuthorizationData> UserData
         {
             get
             {
-                return context.UserData;
+                return context.UserAuthorizationData;
             }
         }
 
-        public TESTING_UserDataController(DbContextOptions<UsersDbContext> options)
+        public TESTING_UserDataController(DbContextOptions<UsersAuthorizationDbContext> options)
         {
-            context = new UsersDbContext(options);
+            context = new UsersAuthorizationDbContext(options);
         }
 
         [HttpGet("{upload}")]

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models
 {
-    public class LoginSubmit
+    public class PhoneNum
     {
         [Required]
-        public string UserID { get; set; }
+        public string Num { get; set; }
         [Required]
-        public string Password { get; set; }
+        public bool Confirmed { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_SERVER.Migrations
 {
-    [DbContext(typeof(UsersDbContext))]
+    [DbContext(typeof(UsersAuthorizationDbContext))]
     [Migration("20201107065934_Testing")]
     partial class Testing
     {

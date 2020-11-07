@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_SERVER.Migrations
 {
-    [DbContext(typeof(UsersDbContext))]
+    [DbContext(typeof(UsersAuthorizationDbContext))]
     partial class UsersDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

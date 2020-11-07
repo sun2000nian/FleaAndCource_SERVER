@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using API_SERVER.Data;
+using API_SERVER.Services;
 
 namespace API_SERVER
 {
@@ -29,7 +30,8 @@ namespace API_SERVER
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<UsersDbContext>(options =>
+            services.AddTransient<LoginService>();
+            services.AddDbContext<UsersAuthorizationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
         }

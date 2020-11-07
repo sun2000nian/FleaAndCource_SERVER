@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models
 {
-    public class LoginSubmit
+    public class Email
     {
         [Required]
-        public string UserID { get; set; }
+        [EmailAddress]
+        public string email { get; set; }
         [Required]
-        public string Password { get; set; }
+        public bool Confirmed { get; set; }
     }
 }

@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models
 {
-    public class User
+    public class UserAuthorizationData
     {
         [Required]
         [Key]
-        public Int64 UserID { get; set; }
-
-        public string userType { get; set; }
-        public string gender { get; set; }
-        public string name { get; set; }
-
+        public string UserID { get; set; }
+        [Required]
+        public string Password { get; set; }
     }
 }
