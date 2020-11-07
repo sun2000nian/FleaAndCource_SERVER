@@ -1,0 +1,9 @@
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.AssemblyInfoInputs.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.AssemblyInfo.cs
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.RazorTargetAssemblyInfo.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\staticwebassets\API_SERVER.StaticWebAssets.Manifest.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\staticwebassets\API_SERVER.StaticWebAssets.xml
