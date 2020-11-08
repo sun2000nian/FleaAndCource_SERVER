@@ -60,7 +60,7 @@ namespace API_SERVER.Services
                     return new Tuple<bool, string>(true, response);
                 }
             }
-            return new Tuple<bool, string>(false, "FAILED");
+            return new Tuple<bool, string>(false, "");
         }
     }
 }
