@@ -2,26 +2,27 @@
 
 namespace API_SERVER.Migrations
 {
-    public partial class Testing : Migration
+    public partial class UsersAuthorization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserData",
+                name: "UserAuthorizationData",
                 columns: table => new
                 {
-                    UserID = table.Column<string>(nullable: false)
+                    UserID = table.Column<string>(nullable: false),
+                    Password = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserData", x => x.UserID);
+                    table.PrimaryKey("PK_UserAuthorizationData", x => x.UserID);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserData");
+                name: "UserAuthorizationData");
         }
     }
 }

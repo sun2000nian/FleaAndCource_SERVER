@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sun20\\Source\\Repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj": {}
+    "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sun20\\Source\\Repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj": {
+    "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sun20\\Source\\Repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+        "projectUniqueName": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
         "projectName": "API_SERVER",
-        "projectPath": "C:\\Users\\sun20\\Source\\Repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+        "projectPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
         "packagesPath": "C:\\Users\\sun20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sun20\\Source\\Repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
+        "outputPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\sun20\\AppData\\Roaming\\NuGet\\NuGet.Config",

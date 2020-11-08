@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\API_SERVER",
-    "\\API_SERVER\\API_SERVER"
+    "\\API_SERVER\\API_SERVER",
+    "\\API_SERVER\\API_SERVER\\Models"
   ],
-  "SelectedNode": "\\API_SERVER\\API_SERVER\\Startup.cs",
+  "SelectedNode": "\\API_SERVER\\API_SERVER\\Models\\UserAuthorizationData.cs",
   "PreviewInSolutionExplorer": false
 }

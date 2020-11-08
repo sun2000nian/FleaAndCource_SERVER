@@ -15,7 +15,7 @@ namespace API_SERVER.Data
 
         }
 
-        public DbSet<UserAuthorizationData> UserAuthorizationData { get; set; }
+        public DbSet<UserAuthorizationData> UserAuthorizationDataDb { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

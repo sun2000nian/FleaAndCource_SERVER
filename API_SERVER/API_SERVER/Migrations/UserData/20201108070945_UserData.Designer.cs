@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace API_SERVER.Migrations
+namespace API_SERVER.Migrations.UserData
 {
-    [DbContext(typeof(UsersAuthorizationDbContext))]
-    [Migration("20201107065934_Testing")]
-    partial class Testing
+    [DbContext(typeof(UserDataContext))]
+    [Migration("20201108070945_UserData")]
+    partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,10 +20,31 @@ namespace API_SERVER.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("API_SERVER.Models.User", b =>
+            modelBuilder.Entity("API_SERVER.Models.UserData", b =>
                 {
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("displayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("gender")
+                        .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("phoneNum")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("qq")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserID");
 

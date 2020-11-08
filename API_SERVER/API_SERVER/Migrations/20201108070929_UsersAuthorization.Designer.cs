@@ -3,14 +3,16 @@ using API_SERVER.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API_SERVER.Migrations
 {
     [DbContext(typeof(UsersAuthorizationDbContext))]
-    partial class UsersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201108070929_UsersAuthorization")]
+    partial class UsersAuthorization
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -18,14 +20,18 @@ namespace API_SERVER.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("API_SERVER.Models.User", b =>
+            modelBuilder.Entity("API_SERVER.Models.UserAuthorizationData", b =>
                 {
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserID");
 
-                    b.ToTable("UserData");
+                    b.ToTable("UserAuthorizationData");
                 });
 #pragma warning restore 612, 618
         }

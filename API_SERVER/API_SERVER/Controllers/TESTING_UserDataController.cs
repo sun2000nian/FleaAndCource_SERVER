@@ -23,7 +23,7 @@ namespace API_SERVER.Controllers
         {
             get
             {
-                return context.UserAuthorizationData;
+                return context.UserAuthorizationDataDb;
             }
         }
 

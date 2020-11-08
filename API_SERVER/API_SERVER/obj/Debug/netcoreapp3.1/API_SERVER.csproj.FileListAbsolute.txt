@@ -56,6 +56,6 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.genruntimeconfig.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csproj.CoreCompileInputs.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache

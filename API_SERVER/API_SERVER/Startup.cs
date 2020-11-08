@@ -34,6 +34,9 @@ namespace API_SERVER
             services.AddDbContext<UsersAuthorizationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
+            services.AddDbContext<UserDataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

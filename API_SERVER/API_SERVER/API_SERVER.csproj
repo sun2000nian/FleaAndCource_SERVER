@@ -9,6 +9,20 @@
   <ItemGroup>
     <Compile Remove="Migrations\20201107065742_Testing.cs" />
     <Compile Remove="Migrations\20201107065742_Testing.Designer.cs" />
+    <Compile Remove="Migrations\20201108052554_UsersAuthorization.cs" />
+    <Compile Remove="Migrations\20201108052554_UsersAuthorization.Designer.cs" />
+    <Compile Remove="Migrations\20201108054642_UserData.cs" />
+    <Compile Remove="Migrations\20201108054642_UserData.Designer.cs" />
+    <Compile Remove="Migrations\20201108054759_UserData.cs" />
+    <Compile Remove="Migrations\20201108054759_UserData.Designer.cs" />
+    <Compile Remove="Migrations\20201108054929_UsersAutorization.cs" />
+    <Compile Remove="Migrations\20201108054929_UsersAutorization.Designer.cs" />
+    <Compile Remove="Migrations\UserData\20201108053858_UseData.cs" />
+    <Compile Remove="Migrations\UserData\20201108053858_UseData.Designer.cs" />
+    <Compile Remove="Migrations\UserData\20201108054951_UserData.cs" />
+    <Compile Remove="Migrations\UserData\20201108054951_UserData.Designer.cs" />
+    <Compile Remove="Migrations\UsersAuthorizationDb\20201108054727_UsersAuthorization.cs" />
+    <Compile Remove="Migrations\UsersAuthorizationDb\20201108054727_UsersAuthorization.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +32,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\UsersAuthorizationDb\" />
   </ItemGroup>
 
 
