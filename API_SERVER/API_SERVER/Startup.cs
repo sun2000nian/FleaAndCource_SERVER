@@ -30,7 +30,7 @@ namespace API_SERVER
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<LoginService>();
+            services.AddTransient<AccountService>();
             services.AddDbContext<UsersAuthorizationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
