@@ -41,21 +41,21 @@ namespace API_SERVER.Services
         public Tuple<bool, string> LoginCheck(string submitedData)//true为正确，false为错误
         {
             LoginSubmit loginSubmit = JsonSerializer.Deserialize<LoginSubmit>(submitedData);
-            if (AuthorizationDb.Where(t => t.UserID == loginSubmit.UserID).Count() != 0)
+            if (AuthorizationDb.Where(t => t.UserID == loginSubmit.userID).Count() != 0)
             {
-                UserAuthorizationData user = AuthorizationDb.Single<UserAuthorizationData>(t => t.UserID == loginSubmit.UserID);
+                UserAuthorizationData user = AuthorizationDb.Single<UserAuthorizationData>(t => t.UserID == loginSubmit.userID);
                 //密码正确
                 if (user.Password == loginSubmit.Password)
                 {
                     //若个人信息库中无此用户
-                    if (UserDataDb.Where(t => t.UserID == user.UserID).Count() == 0)
+                    if (UserDataDb.Where(t => t.userID == user.UserID).Count() == 0)
                     {
                         UserData userData = new UserData();
-                        userData.UserID = user.UserID;
+                        userData.userID = user.UserID;
                         UserDataDb.Add(userData);
                         UserDataContext.SaveChanges();
                     }
-                    UserData personalData = UserDataDb.Single<UserData>(t => t.UserID == user.UserID);
+                    UserData personalData = UserDataDb.Single<UserData>(t => t.userID == user.UserID);
                     string response = JsonSerializer.Serialize<UserData>(personalData);
                     return new Tuple<bool, string>(true, response);
                 }

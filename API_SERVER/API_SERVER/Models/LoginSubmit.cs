@@ -9,7 +9,7 @@ namespace API_SERVER.Models
     public class LoginSubmit
     {
         [Required]
-        public string UserID { get; set; }
+        public string userID { get; set; }
         [Required]
         public string Password { get; set; }
     }

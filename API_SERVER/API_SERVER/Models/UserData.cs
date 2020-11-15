@@ -12,7 +12,7 @@ namespace API_SERVER.Models
     {
         [Required]
         [Key]
-        public string UserID { get; set; }
+        public string userID { get; set; }
         public string userType { get; set; }
 
         [DefaultValue(2)]
