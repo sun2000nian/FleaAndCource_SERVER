@@ -15,7 +15,9 @@ namespace API_SERVER.Models
 
         public enum ChangePasswordCode
         {
-            //TODO:完善更改密码，用于传递更改结果
+            //TODO:(Values)完善更改密码，用于传递更改结果
         }
+
+        //TODO (Values)更新信息
     }
 }

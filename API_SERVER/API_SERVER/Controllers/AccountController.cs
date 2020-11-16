@@ -53,9 +53,15 @@ namespace API_SERVER.Controllers
             }
         }
 
-        //TODO:密码更改控制器
+        //TODO:(Controller)密码更改
         [HttpPost]
         public async Task<IActionResult> ChangePassword()
+        {
+
+        }
+
+        //TODO:(Controller) 更新头像
+        public async Task<IActionResult> UpdateAvatar()
         {
 
         }

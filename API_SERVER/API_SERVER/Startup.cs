@@ -31,6 +31,7 @@ namespace API_SERVER
         {
             services.AddControllers();
             services.AddTransient<AccountService>();
+            services.AddTransient<PersonalInfoService>();
             services.AddDbContext<UsersAuthorizationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );

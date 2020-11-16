@@ -87,10 +87,20 @@ namespace API_SERVER.Services
             }
         }
 
-        //TODO:更改密码
+        //TODO:(Service)更改密码
         public int ChangePassword(string submitData)
         {
 
         }
+
+        
+
+        //TODO:(Service)更改信息
+        public int UpdateInfo()
+        {
+
+        }
+
+        //TODO:(Service)接受图像
     }
 }
