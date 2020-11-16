@@ -52,5 +52,12 @@ namespace API_SERVER.Controllers
                 default: return NotFound(result.ToString());
             }
         }
+
+        //TODO:密码更改控制器
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword()
+        {
+
+        }
     }
 }

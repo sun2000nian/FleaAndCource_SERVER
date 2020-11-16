@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models
 {
+    //HACK:更改类名
     public class LoginSubmit
     {
         [Required]

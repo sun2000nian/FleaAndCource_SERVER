@@ -86,5 +86,11 @@ namespace API_SERVER.Services
                 return (int)Values.RegisterCode.Success;
             }
         }
+
+        //TODO:更改密码
+        public int ChangePassword(string submitData)
+        {
+
+        }
     }
 }
