@@ -90,7 +90,7 @@ namespace API_SERVER.Services
         //TODO:(Service)更改密码
         public int ChangePassword(string submitData)
         {
-
+            return 0;
         }
 
         
@@ -98,9 +98,19 @@ namespace API_SERVER.Services
         //TODO:(Service)更改信息
         public int UpdateInfo()
         {
-
+            return 0;
         }
 
         //TODO:(Service)接受图像
+
+        //TODO (Service)用户存在检查
+        public int UserExistanceCheck(string username)
+        {
+            if (AuthorizationDb.Where(t => t.UserID == username).Count() != 0)
+            {
+                return (int)Values.UserExistance.Exist;
+            }
+            return (int)Values.UserExistance.NotExist;
+        }
     }
 }

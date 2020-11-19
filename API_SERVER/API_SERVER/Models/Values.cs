@@ -19,5 +19,12 @@ namespace API_SERVER.Models
         }
 
         //TODO (Values)更新信息
+
+        //TODO (Values)用户是否存在
+        public enum UserExistance
+        {
+            Exist,
+            NotExist
+        }
     }
 }

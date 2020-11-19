@@ -38,7 +38,7 @@ namespace API_SERVER.Controllers
             }
         }
 
-        [HttpPost("register")]
+        [HttpGet("register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         public async Task<IActionResult> Register(
@@ -57,13 +57,20 @@ namespace API_SERVER.Controllers
         [HttpPost]
         public async Task<IActionResult> ChangePassword()
         {
-
+            return Ok();
         }
 
         //TODO:(Controller) 更新头像
         public async Task<IActionResult> UpdateAvatar()
         {
+            return Ok();
+        }
 
+        //TODO (Controller)检查用户是否存在
+        [HttpGet("usrchk")]
+        public async Task<IActionResult> UserExistanceCheck()
+        {
+            return Ok();
         }
     }
 }
