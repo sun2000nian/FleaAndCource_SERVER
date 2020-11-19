@@ -47,7 +47,6 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.AssemblyInfoInputs.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.AssemblyInfo.cs
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csproj.CoreCompileInputs.cache
