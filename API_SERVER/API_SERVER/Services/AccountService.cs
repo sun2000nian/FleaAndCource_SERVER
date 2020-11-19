@@ -76,6 +76,8 @@ namespace API_SERVER.Services
                 if (UserDataDb.Where(t => t.userID == Submit.userID).Count() != 0)
                 {
                     var user = UserDataDb.Where(t => t.userID == Submit.userID);
+
+                    //HACK BUG:信息库中用户存在时，该句将导致错误，返回500
                     UserDataDb.Remove((UserData)user);
                 }
                 UserAuthorizationData newuser = new UserAuthorizationData();

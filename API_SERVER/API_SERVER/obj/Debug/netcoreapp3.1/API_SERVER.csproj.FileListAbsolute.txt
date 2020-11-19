@@ -58,3 +58,4 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.genruntimeconfig.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache
