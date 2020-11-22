@@ -16,17 +16,17 @@ namespace API_SERVER.Services
 
         public AccountService(DbContextOptions<UsersAuthorizationDbContext> userAuthorizationOptions, DbContextOptions<UserDataContext> userDataOptions)
         {
-            AuthorizationData = new UsersAuthorizationDbContext(userAuthorizationOptions);
+            AuthorizationDataContext = new UsersAuthorizationDbContext(userAuthorizationOptions);
             UserDataContext = new UserDataContext(userDataOptions);
         }
-        private UsersAuthorizationDbContext AuthorizationData { get; set; }
+        private UsersAuthorizationDbContext AuthorizationDataContext { get; set; }
         private UserDataContext UserDataContext { get; set; }
 
         private DbSet<UserAuthorizationData> AuthorizationDb
         {
             get
             {
-                return AuthorizationData.UserAuthorizationDataDb;
+                return AuthorizationDataContext.UserAuthorizationDataDb;
             }
         }
 
@@ -75,16 +75,15 @@ namespace API_SERVER.Services
                 //若个人信息库中有此用户
                 if (UserDataDb.Where(t => t.userID == Submit.userID).Count() != 0)
                 {
-                    var user = UserDataDb.Where(t => t.userID == Submit.userID);
-
-                    //HACK BUG:信息库中用户存在时，该句将导致错误，返回500
-                    UserDataDb.Remove((UserData)user);
+                    var user = UserDataDb.Single<UserData>(i => i.userID == Submit.userID);
+                    UserDataDb.Remove(user);
+                    UserDataContext.SaveChanges();
                 }
                 UserAuthorizationData newuser = new UserAuthorizationData();
                 newuser.UserID = Submit.userID;
                 newuser.Password = Submit.Password;
                 AuthorizationDb.Add(newuser);
-                AuthorizationData.SaveChanges();
+                AuthorizationDataContext.SaveChanges();
                 return (int)Values.RegisterCode.Success;
             }
         }
@@ -95,7 +94,7 @@ namespace API_SERVER.Services
             return 0;
         }
 
-        
+
 
         //TODO:(Service)更改信息
         public int UpdateInfo()

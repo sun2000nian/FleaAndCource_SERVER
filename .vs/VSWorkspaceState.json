@@ -3,8 +3,9 @@
     "",
     "\\API_SERVER",
     "\\API_SERVER\\API_SERVER",
-    "\\API_SERVER\\API_SERVER\\Models"
+    "\\API_SERVER\\API_SERVER\\Models",
+    "\\API_SERVER\\API_SERVER\\Services"
   ],
-  "SelectedNode": "\\API_SERVER\\API_SERVER\\Models\\UserAuthorizationData.cs",
+  "SelectedNode": "\\API_SERVER\\API_SERVER\\Models\\UserData.cs",
   "PreviewInSolutionExplorer": false
 }
