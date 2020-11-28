@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\API_SERVER",
-    "\\API_SERVER\\API_SERVER",
-    "\\API_SERVER\\API_SERVER\\Models",
-    "\\API_SERVER\\API_SERVER\\Services"
+    ""
   ],
-  "SelectedNode": "\\API_SERVER\\API_SERVER\\Services\\AccountService.cs",
+  "SelectedNode": "\\API_SERVER.sln",
   "PreviewInSolutionExplorer": false
 }

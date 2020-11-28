@@ -8,6 +8,7 @@ using API_SERVER.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace API_SERVER.Controllers
 {
@@ -61,9 +62,12 @@ namespace API_SERVER.Controllers
         }
 
         //TODO:(Controller) 更新头像
-        public async Task<IActionResult> UpdateAvatar()
+        [HttpPost("img")]
+        public async Task<IActionResult> UpdateAvatar(
+            //[FromQuery] string submitData,
+            [FromBody] IEnumerable<int> value)
         {
-            return Ok();
+            return Ok(value.ToArray().ToString());
         }
 
         //TODO (Controller)检查用户是否存在

@@ -102,7 +102,8 @@ namespace API_SERVER.Services
             return 0;
         }
 
-        //TODO:(Service)接受图像
+        //TODO:(Service)接受头像图像
+        //public int ReceiveImg()
 
         //TODO (Service)用户存在检查
         public int UserExistanceCheck(string username)
