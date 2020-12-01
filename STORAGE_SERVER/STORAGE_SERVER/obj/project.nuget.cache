@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KGeT/sqkteGSLprYh7niBEA4J+Fb8km7ilishl6ZccczWPzfhBE8/Ji0CFbPg7bcIczuY1n7CcplJN4p7vQHlA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\STORAGE_SERVER\\STORAGE_SERVER\\STORAGE_SERVER.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sun20\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.9\\microsoft.visualstudio.azure.containers.tools.targets.1.10.9.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\API_SERVER\\API_SERVER",
+    "\\API_SERVER\\API_SERVER\\Controllers"
   ],
-  "SelectedNode": "\\API_SERVER.sln",
   "PreviewInSolutionExplorer": false
 }
