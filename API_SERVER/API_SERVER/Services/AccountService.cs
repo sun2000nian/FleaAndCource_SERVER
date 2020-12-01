@@ -103,7 +103,10 @@ namespace API_SERVER.Services
         }
 
         //TODO:(Service)接受头像图像
-        public int AvatarUpdate(string submitData,)
+        public int AvatarUpdate(string submitData)
+        {
+            return 0;
+        }
         //public int ReceiveImg()
 
         //TODO (Service)用户存在检查
