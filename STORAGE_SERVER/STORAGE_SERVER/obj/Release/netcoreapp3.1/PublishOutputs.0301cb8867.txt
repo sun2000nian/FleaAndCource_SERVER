@@ -1,0 +1,7 @@
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\STORAGE_SERVER.exe
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\STORAGE_SERVER.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\STORAGE_SERVER.deps.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\STORAGE_SERVER.runtimeconfig.json
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Release\netcoreapp3.1\PubTmp\Out\STORAGE_SERVER.pdb
