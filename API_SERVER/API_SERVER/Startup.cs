@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using API_SERVER.Data;
 using API_SERVER.Services;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace API_SERVER
 {
@@ -38,6 +39,12 @@ namespace API_SERVER
             services.AddDbContext<UserDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
+            /*
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = int.MaxValue;
+            });
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

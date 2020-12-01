@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.IO.Abstractions;
 
 namespace API_SERVER.Controllers
 {
@@ -63,11 +65,16 @@ namespace API_SERVER.Controllers
 
         //TODO:(Controller) 更新头像
         [HttpPost("img")]
+        [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue, MemoryBufferThreshold = int.MaxValue)]
         public async Task<IActionResult> UpdateAvatar(
-            //[FromQuery] string submitData,
-            [FromBody] IEnumerable<int> value)
+            [FromQuery] string submitData,
+            [FromForm] IFormFile file)
         {
-            return Ok(value.ToArray().ToString());
+            string fdbk = submitData;
+            fdbk += '\n' + file.Name;
+            fdbk += '\n' + file.FileName;
+            fdbk += '\n' + file.ContentType;
+            return Ok(fdbk);
         }
 
         //TODO (Controller)检查用户是否存在
