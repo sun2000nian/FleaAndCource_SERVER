@@ -91,7 +91,17 @@ namespace API_SERVER.Services
         //TODO:(Service)更改密码
         public int ChangePassword(string submitData)
         {
-            return 0;
+            LoginSubmit Submit = JsonSerializer.Deserialize<LoginSubmit>(submitData);
+            //存在此用户且新密码与原密码相同，反馈不能修改密码
+            if (AuthorizationDb.Where(t => t.UserID == Submit.userID && t.Password == Submit.Password).Count()!=0)
+                return (int)Values.ChangePasswordCode.ChangeFailed;
+            else 
+            {
+                //TODO:修改密码
+
+                return (int)Values.ChangePasswordCode.ChangeSuccessfully;
+            }
+                     
         }
 
 

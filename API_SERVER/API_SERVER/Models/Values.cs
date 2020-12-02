@@ -16,9 +16,16 @@ namespace API_SERVER.Models
         public enum ChangePasswordCode
         {
             //TODO:(Values)完善更改密码，用于传递更改结果
+            ChangeSuccessfully,
+            ChangeFailed
         }
 
         //TODO (Values)更新信息
+        public enum ChangeInformation 
+        {
+            UpdatedSuccessfully,
+            UpdatedFailed
+        }
 
         //TODO (Values)用户是否存在
         public enum UserExistance
