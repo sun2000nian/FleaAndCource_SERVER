@@ -8,16 +8,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Net.Http;
 
 namespace API_SERVER.Services
 {
     public class AccountService
     {
+        private readonly HttpClient _httpClient;
 
-        public AccountService(DbContextOptions<UsersAuthorizationDbContext> userAuthorizationOptions, DbContextOptions<UserDataContext> userDataOptions)
+        public AccountService(
+            DbContextOptions<UsersAuthorizationDbContext> userAuthorizationOptions,
+            DbContextOptions<UserDataContext> userDataOptions,
+            IHttpClientFactory httpClient)
         {
             AuthorizationDataContext = new UsersAuthorizationDbContext(userAuthorizationOptions);
             UserDataContext = new UserDataContext(userDataOptions);
+            _httpClient = httpClient.CreateClient();
         }
         private UsersAuthorizationDbContext AuthorizationDataContext { get; set; }
         private UserDataContext UserDataContext { get; set; }
@@ -88,10 +94,29 @@ namespace API_SERVER.Services
             }
         }
 
-        //TODO:(Service)更改密码
-        public int ChangePassword(string submitData)
+        public async Task<Values.ChangePasswordResult> ChangePassword(string submitData)
         {
-            return 0;
+            var passwordChanging = JsonSerializer.Deserialize<ChangePassword>(submitData);
+            if (passwordChanging.userID != null && passwordChanging.newPassword != null)
+            {
+                var user = AuthorizationDb.Single<UserAuthorizationData>(user => user.UserID == passwordChanging.userID);
+                AuthorizationDataContext.Entry(user).State = EntityState.Detached;
+                if (user == null) return Values.ChangePasswordResult.NoUser;
+                if (user.Password == passwordChanging.oldPassword)
+                {
+                    UserAuthorizationData newUser = new UserAuthorizationData
+                    {
+                        UserID = user.UserID,
+                        Password = passwordChanging.newPassword
+                    };
+
+                    AuthorizationDb.Update(newUser);
+                    AuthorizationDataContext.SaveChanges();
+                    return Values.ChangePasswordResult.Success;
+                }
+                else return Values.ChangePasswordResult.PasswordWrong;
+            }
+            else return Values.ChangePasswordResult.DataInvalid;
         }
 
 
@@ -105,6 +130,8 @@ namespace API_SERVER.Services
         //TODO:(Service)接受头像图像
         public int AvatarUpdate(string submitData)
         {
+
+
             return 0;
         }
         //public int ReceiveImg()
