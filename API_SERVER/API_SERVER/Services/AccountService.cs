@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 
 namespace API_SERVER.Services
 {
@@ -128,7 +129,7 @@ namespace API_SERVER.Services
         }
 
         //TODO:(Service)接受头像图像
-        public int AvatarUpdate(string submitData)
+        public int AvatarUpdate(string submitData,IFormFile file)
         {
 
 

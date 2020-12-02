@@ -91,7 +91,7 @@ namespace API_SERVER.Controllers
             [FromQuery] string submitData,
             [FromForm] IFormFile file)
         {
-            service.ChangePassword("str");
+            await service.ChangePassword("str");
             return Ok();
         }
 
