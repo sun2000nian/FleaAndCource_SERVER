@@ -5894,23 +5894,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\96199\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\sun20\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+      "projectUniqueName": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
       "projectName": "API_SERVER",
-      "projectPath": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
-      "packagesPath": "C:\\Users\\96199\\.nuget\\packages\\",
-      "outputPath": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
+      "projectPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+      "packagesPath": "C:\\Users\\sun20\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\96199\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sun20\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5922,6 +5918,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5933,6 +5930,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
@@ -5963,12 +5961,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5977,7 +5969,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
