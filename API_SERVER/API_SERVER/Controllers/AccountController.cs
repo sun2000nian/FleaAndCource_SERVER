@@ -24,6 +24,12 @@ namespace API_SERVER.Controllers
             service = accountService;
         }
 
+        [HttpGet("connection")]
+        public async Task<IActionResult> checkconnection()
+        {
+            return Ok();
+        }
+
         [HttpGet("login")]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -56,11 +62,26 @@ namespace API_SERVER.Controllers
             }
         }
 
-        //TODO:(Controller)密码更改
-        [HttpPost]
-        public async Task<IActionResult> ChangePassword()
+        [HttpPost("changepassword")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status409Conflict)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> ChangePassword(
+            [FromQuery] string submitData)
         {
-            return Ok();
+            var result = service.ChangePassword(submitData);
+            switch (result.Result)
+            {
+                case Values.ChangePasswordResult.Success:
+                    return Ok();
+                case Values.ChangePasswordResult.PasswordWrong:
+                    return Unauthorized();
+                case Values.ChangePasswordResult.DataInvalid:
+                    return Conflict();
+                case Values.ChangePasswordResult.NoUser:
+                    return Unauthorized();
+                default: return NoContent();
+            }
         }
 
         //TODO:(Controller) 更新头像
@@ -70,11 +91,8 @@ namespace API_SERVER.Controllers
             [FromQuery] string submitData,
             [FromForm] IFormFile file)
         {
-            string fdbk = submitData;
-            fdbk += '\n' + file.Name;
-            fdbk += '\n' + file.FileName;
-            fdbk += '\n' + file.ContentType;
-            return Ok(fdbk);
+            await service.ChangePassword("str");
+            return Ok();
         }
 
         //TODO (Controller)检查用户是否存在
