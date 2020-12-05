@@ -13,9 +13,10 @@ namespace STORAGE_SERVER.Controllers
     [Route("/")]
     public class FileIOController : Controller
     {
+        [HttpGet("/")]
         public IActionResult Index()
         {
-            return View();
+            return Ok();
         }
 
         [HttpPost("upload")]
