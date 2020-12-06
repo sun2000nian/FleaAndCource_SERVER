@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "MediaTypeMap/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/MimeTypeMap.dll": {}
+        },
+        "runtime": {
+          "lib/net40/MimeTypeMap.dll": {}
+        }
+      },
       "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "type": "package",
         "compile": {
@@ -1534,6 +1543,18 @@
     }
   },
   "libraries": {
+    "MediaTypeMap/2.1.0": {
+      "sha512": "o0Q01zOu4AkaDDbOQdwCsWuOoXlPGzqyl1j8ABeZJy/xsMm1U96qv/qx2X8sfyZNBY+94OaAPYCHn/1D78/cGg==",
+      "type": "package",
+      "path": "mediatypemap/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/MimeTypeMap.dll",
+        "mediatypemap.2.1.0.nupkg.sha512",
+        "mediatypemap.nuspec"
+      ]
+    },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "sha512": "yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
       "type": "package",
@@ -5887,6 +5908,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "MediaTypeMap >= 2.1.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.9",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
       "Microsoft.VisualStudio.Azure.Containers.Tools.Targets >= 1.10.9",
@@ -5894,23 +5916,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\96199\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\sun20\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+      "projectUniqueName": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
       "projectName": "API_SERVER",
-      "projectPath": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
-      "packagesPath": "C:\\Users\\96199\\.nuget\\packages\\",
-      "outputPath": "F:\\softwareengineering\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
+      "projectPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\API_SERVER.csproj",
+      "packagesPath": "C:\\Users\\sun20\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\API_SERVER\\API_SERVER\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\96199\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sun20\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5922,6 +5940,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5933,7 +5952,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
+          "MediaTypeMap": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          },
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[3.1.9, )"
@@ -5963,12 +5987,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -5977,8 +5995,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“.NETCoreApp,Version=v3.1”还原包“MediaTypeMap 2.1.0”。此包可能与项目不完全兼容。",
+      "libraryId": "MediaTypeMap",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

@@ -40,6 +40,9 @@ namespace API_SERVER
             services.AddDbContext<UserDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
+            services.AddDbContext<ServerSideUserDataContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
+                );
             /*
             services.Configure<FormOptions>(options =>
             {

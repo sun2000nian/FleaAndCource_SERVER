@@ -10,6 +10,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Net.Http;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography;
+using System.Text;
+using System.IO;
+using Microsoft.AspNetCore.StaticFiles;
+using MimeTypes;
 
 namespace API_SERVER.Services
 {
@@ -20,14 +26,17 @@ namespace API_SERVER.Services
         public AccountService(
             DbContextOptions<UsersAuthorizationDbContext> userAuthorizationOptions,
             DbContextOptions<UserDataContext> userDataOptions,
+            DbContextOptions<ServerSideUserDataContext> serverSideUserDataOptions,
             IHttpClientFactory httpClient)
         {
             AuthorizationDataContext = new UsersAuthorizationDbContext(userAuthorizationOptions);
             UserDataContext = new UserDataContext(userDataOptions);
+            ServerSideUserDataContext = new ServerSideUserDataContext(serverSideUserDataOptions);
             _httpClient = httpClient.CreateClient();
         }
         private UsersAuthorizationDbContext AuthorizationDataContext { get; set; }
         private UserDataContext UserDataContext { get; set; }
+        private ServerSideUserDataContext ServerSideUserDataContext { get; set; }
 
         private DbSet<UserAuthorizationData> AuthorizationDb
         {
@@ -42,6 +51,14 @@ namespace API_SERVER.Services
             get
             {
                 return UserDataContext.UserDataDb;
+            }
+        }
+
+        private DbSet<UserData_ServerSide> userData_ServerSidesDb
+        {
+            get
+            {
+                return ServerSideUserDataContext.data_ServerSides;
             }
         }
 
@@ -129,10 +146,76 @@ namespace API_SERVER.Services
         }
 
         //TODO:(Service)接受头像图像
-        public int AvatarUpdate(string submitData,IFormFile file)
+        public async Task<int> AvatarUpdate(string userID, IFormFile file)
         {
+            
+            if (userData_ServerSidesDb.Where(t => t.userID == userID).Count() != 0)
+            {
+                UserData_ServerSide user = userData_ServerSidesDb.Single<UserData_ServerSide>(t => t.userID == userID);
+                ServerSideUserDataContext.Entry(user).State = EntityState.Detached;
+
+                if (user.AvatarFileName != null)
+                {
+                    HttpResponseMessage response0 = await _httpClient.DeleteAsync("http://ip2.shiningball.cn:5000/delete?filename=" + user.AvatarFileName);
+                    //_httpClient.Dispose();
+                }
+
+                //获取新的文件名
+                string ContentType;
+                new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out ContentType);
+                var ExtensionName = MimeTypeMap.GetExtension(ContentType);
+                MD5 md5 = MD5.Create();
+                var str = DateTime.UtcNow.ToString() + Path.GetRandomFileName() + ExtensionName;
+                var byteArray = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(str));
+                var filename = BitConverter.ToString(byteArray).Replace("-", "") + ExtensionName;
 
 
+                user.AvatarFileName = filename;
+                var stream = file.OpenReadStream();
+                MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
+                multipartFormDataContent.Add(new StreamContent(stream), "file", "file");
+                HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + filename, multipartFormDataContent);
+
+                userData_ServerSidesDb.Update(user);
+                ServerSideUserDataContext.SaveChanges();
+
+                _httpClient.Dispose();
+            }
+            else
+            {
+                if (AuthorizationDb.Where(t => t.UserID == userID).Count() != 0)
+                {
+                    string ContentType;
+                    new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out ContentType);
+                    var ExtensionName = MimeTypeMap.GetExtension(ContentType);
+                    MD5 md5 = MD5.Create();
+                    var str = DateTime.UtcNow.ToString() + Path.GetRandomFileName() + ExtensionName;
+                    var byteArray = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(str));
+                    var filename = BitConverter.ToString(byteArray).Replace("-", "") + ExtensionName;
+
+                    UserData_ServerSide user = new UserData_ServerSide
+                    {
+                        userID = userID,
+                        AvatarFileName = filename
+                    };
+
+                    var stream = file.OpenReadStream();
+                    MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
+                    multipartFormDataContent.Add(new StreamContent(stream), "file", "file");
+                    HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + filename, multipartFormDataContent);
+
+                    userData_ServerSidesDb.Add(user);
+                    ServerSideUserDataContext.SaveChanges();
+
+                    _httpClient.Dispose();
+                }
+            }
+
+
+            /*
+            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + userID, multipartFormDataContent);
+            _httpClient.Dispose();
+            Console.WriteLine(response.StatusCode);*/
             return 0;
         }
         //public int ReceiveImg()
