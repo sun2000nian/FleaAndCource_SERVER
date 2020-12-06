@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.1": {
       "STORAGE_SERVER/1.0.0": {
         "dependencies": {
+          "MediaTypeMap": "2.1.0",
           "Microsoft.AspNetCore.StaticFiles": "2.2.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.9",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -314,6 +315,17 @@
         },
         "compile": {
           "STORAGE_SERVER.dll": {}
+        }
+      },
+      "MediaTypeMap/2.1.0": {
+        "runtime": {
+          "lib/net40/MimeTypeMap.dll": {
+            "assemblyVersion": "2.1.0.0",
+            "fileVersion": "2.1.0.0"
+          }
+        },
+        "compile": {
+          "lib/net40/MimeTypeMap.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
@@ -2108,6 +2120,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "MediaTypeMap/2.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o0Q01zOu4AkaDDbOQdwCsWuOoXlPGzqyl1j8ABeZJy/xsMm1U96qv/qx2X8sfyZNBY+94OaAPYCHn/1D78/cGg==",
+      "path": "mediatypemap/2.1.0",
+      "hashPath": "mediatypemap.2.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Hosting.Abstractions/2.2.0": {
       "type": "package",

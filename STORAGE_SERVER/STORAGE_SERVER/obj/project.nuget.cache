@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "lkey6AKr1XRUPF+UPKsvO6urrUjUHtKayTum2fKXWl3mThiGPK4vs1ZwjwY7ieCkPDP7GhSqWFAxrJwsBHEv+Q==",
+  "dgSpecHash": "q9RBYxvt5vrPQMH3fV2G6P/kHMHnsTJNKyFUqpFyhqzbwoHE9buv1fx6iLaUEMw5n0zxHsCj+e20y48a1FiHNg==",
   "success": true,
   "projectFilePath": "C:\\Users\\sun20\\source\\repos\\FleaAndCource_SERVER\\STORAGE_SERVER\\STORAGE_SERVER\\STORAGE_SERVER.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\sun20\\.nuget\\packages\\mediatypemap\\2.1.0\\mediatypemap.2.1.0.nupkg.sha512",
     "C:\\Users\\sun20\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\sun20\\.nuget\\packages\\microsoft.aspnetcore.hosting.server.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.server.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\sun20\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
@@ -26,5 +27,16 @@
     "C:\\Users\\sun20\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
     "C:\\Users\\sun20\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "已使用“.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8”而不是项目目标框架“.NETCoreApp,Version=v3.1”还原包“MediaTypeMap 2.1.0”。此包可能与项目不完全兼容。",
+      "libraryId": "MediaTypeMap",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

@@ -84,14 +84,23 @@ namespace API_SERVER.Controllers
             }
         }
 
-        //TODO:(Controller) 更新头像
-        [HttpPost("img")]
+        //TODO:(Controller) 更新头像(待测试)
+        [HttpPost("uploadAvatar")]
         [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue, MemoryBufferThreshold = int.MaxValue)]
         public async Task<IActionResult> UpdateAvatar(
             [FromQuery] string submitData,
             [FromForm] IFormFile file)
         {
             await service.AvatarUpdate(submitData, file);
+            return Ok();
+        }
+
+        //TODO (Controller) 下载头像
+        [HttpGet("downloadAvatar")]
+        public async Task<IActionResult> DownloadAvatar(
+            [FromQuery] string submitData)
+        {
+            service.GetAvatar(submitData);
             return Ok();
         }
 

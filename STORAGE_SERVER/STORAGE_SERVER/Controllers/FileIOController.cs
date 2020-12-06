@@ -6,6 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.StaticFiles;
+using MimeTypes;
+using System.Security.Cryptography;
 
 namespace STORAGE_SERVER.Controllers
 {
@@ -51,8 +53,16 @@ namespace STORAGE_SERVER.Controllers
 
             if (System.IO.File.Exists(filePath))
             {
+                string ContentType;
+                new FileExtensionContentTypeProvider().TryGetContentType(filename, out ContentType);
+                var ExtensionName = MimeTypeMap.GetExtension(ContentType);
+                MD5 md5 = MD5.Create();
+                var str = DateTime.UtcNow.ToString();
+                var byteArray = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(str));
+                var newfilename = BitConverter.ToString(byteArray).Replace("-", "") + ExtensionName;
+
                 byte[] buffer = System.IO.File.ReadAllBytes(filePath);
-                return File(buffer, contentType, filename);
+                return File(buffer, contentType, newfilename);
             }
             else
             {

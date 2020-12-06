@@ -145,10 +145,9 @@ namespace API_SERVER.Services
             return 0;
         }
 
-        //TODO:(Service)接受头像图像
+        //TODO:(Service)接受头像图像(待完善)
         public async Task<int> AvatarUpdate(string userID, IFormFile file)
         {
-            
             if (userData_ServerSidesDb.Where(t => t.userID == userID).Count() != 0)
             {
                 UserData_ServerSide user = userData_ServerSidesDb.Single<UserData_ServerSide>(t => t.userID == userID);
@@ -210,15 +209,18 @@ namespace API_SERVER.Services
                     _httpClient.Dispose();
                 }
             }
-
-
-            /*
-            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + userID, multipartFormDataContent);
-            _httpClient.Dispose();
-            Console.WriteLine(response.StatusCode);*/
             return 0;
         }
-        //public int ReceiveImg()
+        
+        //TODO (Service)从服务器获取头像
+        public string GetAvatar(string userID)
+        {
+            if (AuthorizationDb.Single<UserAuthorizationData>(t => t.UserID == userID) != null)
+            {
+                Console.WriteLine("USERFOUND!");
+            }
+            return "";
+        }
 
         //TODO (Service)用户存在检查
         public int UserExistanceCheck(string username)
