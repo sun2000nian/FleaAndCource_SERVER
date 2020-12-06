@@ -169,7 +169,7 @@ namespace API_SERVER.Services
                 var byteArray = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(str));
                 var filename = BitConverter.ToString(byteArray).Replace("-", "") + ExtensionName;
 
-
+                //上传文件
                 user.AvatarFileName = filename;
                 var stream = file.OpenReadStream();
                 MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
