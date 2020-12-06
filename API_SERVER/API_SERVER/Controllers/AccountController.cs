@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.IO.Abstractions;
+using System.Data;
 
 namespace API_SERVER.Controllers
 {
@@ -100,7 +101,12 @@ namespace API_SERVER.Controllers
         public async Task<IActionResult> DownloadAvatar(
             [FromQuery] string submitData)
         {
-            service.GetAvatar(submitData);
+            var tuple = await service.GetAvatarAsync(submitData);
+            if (tuple.Item1 == Values.GetAvatarResult.Succeed)
+            {
+                var stream = tuple.Item2;
+                return File(stream, "image/png", "file.png");
+            }
             return Ok();
         }
 

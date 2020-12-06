@@ -7,8 +7,6 @@ namespace API_SERVER.Models
 {
     public class Values
     {
-        public string StorageSERVER = "ip2.shiningball.cn";
-
         public enum RegisterCode
         {
             Success,//成功
@@ -32,5 +30,14 @@ namespace API_SERVER.Models
             Exist,
             NotExist
         }
+
+        public enum GetAvatarResult
+        {
+            Succeed,
+            UserNotExist,
+            UsingDefault
+        }
+
+        public const string STORAGESERVER_ADDRESS = "http://ip2.shiningball.cn:5000/";
     }
 }

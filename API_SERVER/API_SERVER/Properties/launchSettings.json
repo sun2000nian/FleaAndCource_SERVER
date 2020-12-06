@@ -20,7 +20,7 @@
     "API_SERVER": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "test",
+      "launchUrl": "downloadAvatar",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

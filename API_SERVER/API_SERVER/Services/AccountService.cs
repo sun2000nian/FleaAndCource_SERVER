@@ -22,7 +22,6 @@ namespace API_SERVER.Services
     public class AccountService
     {
         private readonly HttpClient _httpClient;
-
         public AccountService(
             DbContextOptions<UsersAuthorizationDbContext> userAuthorizationOptions,
             DbContextOptions<UserDataContext> userDataOptions,
@@ -211,15 +210,38 @@ namespace API_SERVER.Services
             }
             return 0;
         }
-        
+
         //TODO (Service)从服务器获取头像
-        public string GetAvatar(string userID)
+        public async Task<Tuple<Values.GetAvatarResult, Stream>> GetAvatarAsync(string userID)
         {
-            if (AuthorizationDb.Single<UserAuthorizationData>(t => t.UserID == userID) != null)
+            string path = "http://ip2.shiningball.cn:5000/download?filename=114DB7F14B7A0E921272713F04ADC1F7.png";
+            var httpResponse = await _httpClient.GetAsync(path);
+            foreach(var item in httpResponse.Content.Headers.ToArray())
             {
-                Console.WriteLine("USERFOUND!");
+                Console.WriteLine(item.Key + "//" + item.Value);
             }
-            return "";
+
+            return new Tuple<Values.GetAvatarResult, Stream>(
+                Values.GetAvatarResult.Succeed,
+                await httpResponse.Content.ReadAsStreamAsync());
+            /*
+            if (AuthorizationDb.Where<UserAuthorizationData>(t => t.UserID == userID).Count() == 0)
+            {
+                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UserNotExist, null);
+            }
+            if (userData_ServerSidesDb.Where<UserData_ServerSide>(t => t.userID == userID).Count() == 0)
+            {
+                string path = Values.STORAGESERVER_ADDRESS + "download?filename=default.png";
+                var httpResponse = await _httpClient.GetStreamAsync(path);
+                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UsingDefault, httpResponse);
+            }
+            else
+            {
+                var user = userData_ServerSidesDb.Single<UserData_ServerSide>(t => t.userID == userID);
+                string path = Values.STORAGESERVER_ADDRESS + "download?filename=" + user.AvatarFileName;
+                var httpResponse = await _httpClient.GetStreamAsync(path);
+                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UsingDefault, httpResponse);
+            }*/
         }
 
         //TODO (Service)用户存在检查
