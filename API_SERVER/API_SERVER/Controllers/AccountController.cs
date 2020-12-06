@@ -105,7 +105,7 @@ namespace API_SERVER.Controllers
             if (tuple.Item1 == Values.GetAvatarResult.Succeed)
             {
                 var stream = tuple.Item2;
-                return File(stream, "image/png", "file.png");
+                return File(stream, tuple.Item3.ToString(), tuple.Item4);
             }
             return Ok();
         }

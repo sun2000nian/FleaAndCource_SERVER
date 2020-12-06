@@ -16,6 +16,7 @@ using System.Text;
 using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
 using MimeTypes;
+using System.Net.Http.Headers;
 
 namespace API_SERVER.Services
 {
@@ -212,36 +213,49 @@ namespace API_SERVER.Services
         }
 
         //TODO (Service)从服务器获取头像
-        public async Task<Tuple<Values.GetAvatarResult, Stream>> GetAvatarAsync(string userID)
+        public async Task<Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>> GetAvatarAsync(string userID)
         {
+            /*
             string path = "http://ip2.shiningball.cn:5000/download?filename=114DB7F14B7A0E921272713F04ADC1F7.png";
             var httpResponse = await _httpClient.GetAsync(path);
-            foreach(var item in httpResponse.Content.Headers.ToArray())
+            foreach (var item in httpResponse.Content.Headers.ToArray())
             {
                 Console.WriteLine(item.Key + "//" + item.Value);
             }
-
-            return new Tuple<Values.GetAvatarResult, Stream>(
+            return new Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>(
                 Values.GetAvatarResult.Succeed,
-                await httpResponse.Content.ReadAsStreamAsync());
-            /*
+                await httpResponse.Content.ReadAsStreamAsync(),
+                httpResponse.Content.Headers.ContentType,
+                httpResponse.Content.Headers.ContentDisposition.FileName);
+            */
             if (AuthorizationDb.Where<UserAuthorizationData>(t => t.UserID == userID).Count() == 0)
             {
-                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UserNotExist, null);
+                return new Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>(
+                Values.GetAvatarResult.UserNotExist, null, null, null);
             }
             if (userData_ServerSidesDb.Where<UserData_ServerSide>(t => t.userID == userID).Count() == 0)
             {
                 string path = Values.STORAGESERVER_ADDRESS + "download?filename=default.png";
-                var httpResponse = await _httpClient.GetStreamAsync(path);
-                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UsingDefault, httpResponse);
+                var httpResponse = await _httpClient.GetAsync(path);
+
+                return new Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>(
+                Values.GetAvatarResult.Succeed,
+                await httpResponse.Content.ReadAsStreamAsync(),
+                httpResponse.Content.Headers.ContentType,
+                httpResponse.Content.Headers.ContentDisposition.FileName);
             }
             else
             {
                 var user = userData_ServerSidesDb.Single<UserData_ServerSide>(t => t.userID == userID);
                 string path = Values.STORAGESERVER_ADDRESS + "download?filename=" + user.AvatarFileName;
-                var httpResponse = await _httpClient.GetStreamAsync(path);
-                return new Tuple<Values.GetAvatarResult, Stream>(Values.GetAvatarResult.UsingDefault, httpResponse);
-            }*/
+                var httpResponse = await _httpClient.GetAsync(path);
+
+                return new Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>(
+                Values.GetAvatarResult.Succeed,
+                await httpResponse.Content.ReadAsStreamAsync(),
+                httpResponse.Content.Headers.ContentType,
+                httpResponse.Content.Headers.ContentDisposition.FileName);
+            }
         }
 
         //TODO (Service)用户存在检查
