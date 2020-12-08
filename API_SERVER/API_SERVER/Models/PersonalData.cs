@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models
 {
-    public class UserData
+    public class PersonalData
     {
+        //TODO 改类名为PersonalData
         [Required]
         [Key]
         public string userID { get; set; }

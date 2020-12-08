@@ -46,7 +46,7 @@ namespace API_SERVER.Services
             }
         }
 
-        private DbSet<UserData> UserDataDb
+        private DbSet<PersonalData> UserDataDb
         {
             get
             {
@@ -74,13 +74,13 @@ namespace API_SERVER.Services
                     //若个人信息库中无此用户
                     if (UserDataDb.Where(t => t.userID == user.UserID).Count() == 0)
                     {
-                        UserData userData = new UserData();
+                        PersonalData userData = new PersonalData();
                         userData.userID = user.UserID;
                         UserDataDb.Add(userData);
                         UserDataContext.SaveChanges();
                     }
-                    UserData personalData = UserDataDb.Single<UserData>(t => t.userID == user.UserID);
-                    string response = JsonSerializer.Serialize<UserData>(personalData);
+                    PersonalData personalData = UserDataDb.Single<PersonalData>(t => t.userID == user.UserID);
+                    string response = JsonSerializer.Serialize<PersonalData>(personalData);
                     return new Tuple<bool, string>(true, response);
                 }
             }
@@ -99,7 +99,7 @@ namespace API_SERVER.Services
                 //若个人信息库中有此用户
                 if (UserDataDb.Where(t => t.userID == Submit.userID).Count() != 0)
                 {
-                    var user = UserDataDb.Single<UserData>(i => i.userID == Submit.userID);
+                    var user = UserDataDb.Single<PersonalData>(i => i.userID == Submit.userID);
                     UserDataDb.Remove(user);
                     UserDataContext.SaveChanges();
                 }

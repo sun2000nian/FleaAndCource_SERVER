@@ -15,11 +15,11 @@ namespace API_SERVER.Data
 
         }
 
-        public DbSet<UserData> UserDataDb { get; set; }
+        public DbSet<PersonalData> UserDataDb { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserData>().ToTable("UserData");
+            modelBuilder.Entity<PersonalData>().ToTable("UserData");
             base.OnModelCreating(modelBuilder);
         }
     }

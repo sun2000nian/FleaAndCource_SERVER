@@ -9,5 +9,6 @@ namespace API_SERVER.Models
     {
         public string orderID { get; set; }
         public DateTime creaTime { get; set; }
+        public string creatorID { get; set; }
     }
 }
