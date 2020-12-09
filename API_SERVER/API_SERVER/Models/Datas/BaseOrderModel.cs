@@ -9,6 +9,7 @@ namespace API_SERVER.Models
     {
         public string orderID { get; set; }
         public DateTime creaTime { get; set; }
-        public string creatorID { get; set; }
+        public string sponsorID { get; set; }
+        public string receiverID { get; set; }
     }
 }

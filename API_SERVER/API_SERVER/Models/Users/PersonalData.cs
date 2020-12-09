@@ -24,4 +24,14 @@ namespace API_SERVER.Models
         public string phoneNum { get; set; }
         public string qq { get; set; }
     }
+
+    public class FleaObject : BaseOrderModel
+    {
+
+    }
+
+    public class CourseObject : BaseOrderModel
+    {
+
+    }
 }
