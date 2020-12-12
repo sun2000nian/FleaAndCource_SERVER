@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_SERVER.Models
+namespace API_SERVER.Models.Datas
 {
     public class PhoneNum
     {

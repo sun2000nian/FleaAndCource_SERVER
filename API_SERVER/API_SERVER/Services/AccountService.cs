@@ -17,6 +17,8 @@ using System.IO;
 using Microsoft.AspNetCore.StaticFiles;
 using MimeTypes;
 using System.Net.Http.Headers;
+using API_SERVER.Models.Submits;
+using API_SERVER.Models.Users;
 
 namespace API_SERVER.Services
 {
@@ -115,6 +117,7 @@ namespace API_SERVER.Services
         public async Task<Values.ChangePasswordResult> ChangePassword(string submitData)
         {
             var passwordChanging = JsonSerializer.Deserialize<ChangePassword>(submitData);
+            //var passwordChanging = submitData;
             if (passwordChanging.userID != null && passwordChanging.newPassword != null)
             {
                 var user = AuthorizationDb.Single<UserAuthorizationData>(user => user.UserID == passwordChanging.userID);
@@ -150,6 +153,7 @@ namespace API_SERVER.Services
         {
             if (userData_ServerSidesDb.Where(t => t.userID == userID).Count() != 0)
             {
+                //用户上传过头像
                 UserData_ServerSide user = userData_ServerSidesDb.Single<UserData_ServerSide>(t => t.userID == userID);
                 ServerSideUserDataContext.Entry(user).State = EntityState.Detached;
 
@@ -182,6 +186,7 @@ namespace API_SERVER.Services
             }
             else
             {
+                //用户未上传过头像
                 if (AuthorizationDb.Where(t => t.UserID == userID).Count() != 0)
                 {
                     string ContentType;
@@ -239,7 +244,7 @@ namespace API_SERVER.Services
                 var httpResponse = await _httpClient.GetAsync(path);
 
                 return new Tuple<Values.GetAvatarResult, Stream, MediaTypeHeaderValue, string>(
-                Values.GetAvatarResult.Succeed,
+                Values.GetAvatarResult.UsingDefault,
                 await httpResponse.Content.ReadAsStreamAsync(),
                 httpResponse.Content.Headers.ContentType,
                 httpResponse.Content.Headers.ContentDisposition.FileName);

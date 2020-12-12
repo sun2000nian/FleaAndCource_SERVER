@@ -68,7 +68,7 @@ namespace API_SERVER.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ChangePassword(
-            [FromQuery] string submitData)
+            [FromQuery] string submitData)//Json格式的ChangePasswordModel
         {
             var result = service.ChangePassword(submitData);
             switch (result.Result)
@@ -89,20 +89,25 @@ namespace API_SERVER.Controllers
         [HttpPost("uploadAvatar")]
         [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue, MemoryBufferThreshold = int.MaxValue)]
         public async Task<IActionResult> UpdateAvatar(
-            [FromQuery] string submitData,
+            [FromQuery] string userID,
             [FromForm] IFormFile file)
         {
-            await service.AvatarUpdate(submitData, file);
+            await service.AvatarUpdate(userID, file);
             return Ok();
         }
 
         //TODO (Controller) 下载头像
         [HttpGet("downloadAvatar")]
         public async Task<IActionResult> DownloadAvatar(
-            [FromQuery] string submitData)
+            [FromQuery] string userID)
         {
-            var tuple = await service.GetAvatarAsync(submitData);
+            var tuple = await service.GetAvatarAsync(userID);
             if (tuple.Item1 == Values.GetAvatarResult.Succeed)
+            {
+                var stream = tuple.Item2;
+                return File(stream, tuple.Item3.ToString(), tuple.Item4);
+            }
+            else if (tuple.Item1 == Values.GetAvatarResult.UsingDefault)
             {
                 var stream = tuple.Item2;
                 return File(stream, tuple.Item3.ToString(), tuple.Item4);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API_SERVER.Models
+namespace API_SERVER.Models.Submits
 {
     public class ChangePassword
     {

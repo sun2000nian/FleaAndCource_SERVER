@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Controllers
 {
+    [Route("/")]
+    [ApiController]
     public class PersonalInfoController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+
     }
 }

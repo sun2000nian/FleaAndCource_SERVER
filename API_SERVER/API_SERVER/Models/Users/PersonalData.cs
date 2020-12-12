@@ -1,4 +1,5 @@
-﻿using System;
+﻿using API_SERVER.Models.Datas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace API_SERVER.Models
+namespace API_SERVER.Models.Users
 {
     public class PersonalData
     {
@@ -23,15 +24,9 @@ namespace API_SERVER.Models
         public string email { get; set; }
         public string phoneNum { get; set; }
         public string qq { get; set; }
-    }
+        public string studentID { get; set; }
 
-    public class FleaObject : BaseOrderModel
-    {
-
-    }
-
-    public class CourseObject : BaseOrderModel
-    {
-
+        public ICollection<CourceModel> courceObjects { get; set; }
+        public ICollection<FleaObjectModel> fleaObjects { get; set; }
     }
 }

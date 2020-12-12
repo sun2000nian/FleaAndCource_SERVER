@@ -1,25 +1,40 @@
-﻿using API_SERVER.Models;
+﻿using API_SERVER.Models.Datas;
+using API_SERVER.Models.Users;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API_SERVER.Data
 {
-    public class UserDataContext:DbContext
+    public class UserDataContext : DbContext
     {
         public UserDataContext(DbContextOptions<UserDataContext> options)
-            :base(options)
+            : base(options)
         {
 
         }
 
         public DbSet<PersonalData> UserDataDb { get; set; }
+        public DbSet<CourceModel> courceObjectsDb { get; set; }
+        public DbSet<FleaObjectModel> fleaObjectsDb { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PersonalData>().ToTable("UserData");
+            modelBuilder.Entity<CourceModel>(entity => {
+                entity.HasOne(p => p.sponsorID)
+                .WithMany(p => p.courceObjects);
+
+                entity.HasOne(p => p.receiverID)
+                .WithMany(p => p.courceObjects);
+            });
+
+            modelBuilder.Entity<FleaObjectModel>(entity => {
+                entity.HasOne(p => p.sponsorID)
+                .WithMany(p => p.fleaObjects);
+
+                entity.HasOne(p => p.receiverID)
+                .WithMany(p => p.fleaObjects);
+            });
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -6,6 +6,7 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\API_SERVER.runtimeconfig.dev.json
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\API_SERVER.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\API_SERVER.pdb
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\MimeTypeMap.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -36,6 +37,7 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.IO.Abstractions.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
@@ -50,14 +52,11 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.AssemblyInfo.cs
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csproj.CoreCompileInputs.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.RazorTargetAssemblyInfo.cache
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csproj.CopyComplete
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\staticwebassets\API_SERVER.StaticWebAssets.Manifest.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\staticwebassets\API_SERVER.StaticWebAssets.xml
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\scopedcss\bundle\API_SERVER.styles.css
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.RazorTargetAssemblyInfo.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csproj.CopyComplete
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.genruntimeconfig.cache
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\API_SERVER.csprojAssemblyReference.cache
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Debug\netcoreapp3.1\scopedcss\bundle\API_SERVER.styles.css
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\System.IO.Abstractions.dll
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Debug\netcoreapp3.1\MimeTypeMap.dll

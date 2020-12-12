@@ -1,4 +1,5 @@
 ﻿using API_SERVER.Models;
+using API_SERVER.Models.Datas;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
