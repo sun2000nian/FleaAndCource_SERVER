@@ -32,18 +32,18 @@ namespace API_SERVER.Controllers
         }
 
         //TODO (Controller)检查用户是否存在
-        [HttpGet("usrchk")]
+        [HttpPost("usrchk")]
         public async Task<IActionResult> UserExistanceCheck(
-            [FromBody] string userID)
+            [FromForm] string userID)
         {
-            return Ok();
+            return Ok(userID);
         }
 
-        [HttpGet("login")]
+        [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Login(
-            [FromBody] string submitData)
+            [FromForm] string submitData)
         {
             var result = service.LoginCheck(submitData);
             if (result.Item1)
@@ -56,11 +56,11 @@ namespace API_SERVER.Controllers
             }
         }
 
-        [HttpGet("register")]
+        [HttpPost("register")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         public async Task<IActionResult> Register(
-            [FromBody] string submitData)
+            [FromForm] string submitData)
         {
             var result = service.Register(submitData);
             switch (result)
@@ -76,7 +76,7 @@ namespace API_SERVER.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ChangePassword(
-            [FromBody] string submitData)//Json格式的ChangePasswordModel
+            [FromForm] string submitData)//Json格式的ChangePasswordModel
         {
             var result = service.ChangePassword(submitData);
             switch (result.Result)

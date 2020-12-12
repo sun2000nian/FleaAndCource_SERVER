@@ -71,7 +71,7 @@ namespace API_SERVER.Services
             {
                 UserAuthorizationData user = AuthorizationDb.Single<UserAuthorizationData>(t => t.UserID == loginSubmit.userID);
                 //密码正确
-                if (user.Password == loginSubmit.Password)
+                if (user.Password == loginSubmit.password)
                 {
                     //若个人信息库中无此用户
                     if (UserDataDb.Where(t => t.userID == user.UserID).Count() == 0)
@@ -107,7 +107,7 @@ namespace API_SERVER.Services
                 }
                 UserAuthorizationData newuser = new UserAuthorizationData();
                 newuser.UserID = Submit.userID;
-                newuser.Password = Submit.Password;
+                newuser.Password = Submit.password;
                 AuthorizationDb.Add(newuser);
                 AuthorizationDataContext.SaveChanges();
                 return (int)Values.RegisterCode.Success;

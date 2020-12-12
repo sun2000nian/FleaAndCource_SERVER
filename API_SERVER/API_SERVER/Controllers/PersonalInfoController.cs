@@ -32,9 +32,9 @@ namespace API_SERVER.Controllers
         }
 
         //TODO (Controller) 下载头像
-        [HttpGet("downloadAvatar")]
+        [HttpPost("downloadAvatar")]
         public async Task<IActionResult> DownloadAvatar(
-            [FromBody] string userID)
+            [FromForm] string userID)
         {
             var tuple = await service.GetAvatarAsync(userID);
             if (tuple.Item1 == Values.GetAvatarResult.Succeed)
