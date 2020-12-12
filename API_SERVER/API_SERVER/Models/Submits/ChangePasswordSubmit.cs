@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Models.Submits
 {
-    public class ChangePassword
+    public class ChangePasswordSubmit
     {
         public string userID { get; set; }
         public string newPassword { get; set; }

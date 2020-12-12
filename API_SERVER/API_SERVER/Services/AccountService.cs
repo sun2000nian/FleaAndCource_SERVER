@@ -116,7 +116,7 @@ namespace API_SERVER.Services
 
         public async Task<Values.ChangePasswordResult> ChangePassword(string submitData)
         {
-            var passwordChanging = JsonSerializer.Deserialize<ChangePassword>(submitData);
+            var passwordChanging = JsonSerializer.Deserialize<ChangePasswordSubmit>(submitData);
             //var passwordChanging = submitData;
             if (passwordChanging.userID != null && passwordChanging.newPassword != null)
             {

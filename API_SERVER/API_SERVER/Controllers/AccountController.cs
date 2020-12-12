@@ -25,8 +25,16 @@ namespace API_SERVER.Controllers
             service = accountService;
         }
 
-        [HttpGet("connection")]
+        [HttpGet]
         public async Task<IActionResult> checkconnection()
+        {
+            return Ok();
+        }
+
+        //TODO (Controller)检查用户是否存在
+        [HttpGet("usrchk")]
+        public async Task<IActionResult> UserExistanceCheck(
+            [FromBody] string userID)
         {
             return Ok();
         }
@@ -35,7 +43,7 @@ namespace API_SERVER.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> Login(
-            [FromQuery] string submitData)
+            [FromBody] string submitData)
         {
             var result = service.LoginCheck(submitData);
             if (result.Item1)
@@ -52,7 +60,7 @@ namespace API_SERVER.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status303SeeOther)]
         public async Task<IActionResult> Register(
-            [FromQuery] string submitData)
+            [FromBody] string submitData)
         {
             var result = service.Register(submitData);
             switch (result)
@@ -68,7 +76,7 @@ namespace API_SERVER.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> ChangePassword(
-            [FromQuery] string submitData)//Json格式的ChangePasswordModel
+            [FromBody] string submitData)//Json格式的ChangePasswordModel
         {
             var result = service.ChangePassword(submitData);
             switch (result.Result)
@@ -83,14 +91,6 @@ namespace API_SERVER.Controllers
                     return Unauthorized();
                 default: return NoContent();
             }
-        }
-
-        
-        //TODO (Controller)检查用户是否存在
-        [HttpGet("usrchk")]
-        public async Task<IActionResult> UserExistanceCheck()
-        {
-            return Ok();
         }
     }
 }

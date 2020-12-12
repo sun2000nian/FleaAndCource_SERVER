@@ -24,7 +24,7 @@ namespace API_SERVER.Controllers
         [HttpPost("uploadAvatar")]
         [RequestFormLimits(MultipartBodyLengthLimit = int.MaxValue, ValueLengthLimit = int.MaxValue, MemoryBufferThreshold = int.MaxValue)]
         public async Task<IActionResult> UpdateAvatar(
-            [FromQuery] string userID,
+            [FromForm] string userID,
             [FromForm] IFormFile file)
         {
             await service.AvatarUpdate(userID, file);
@@ -34,7 +34,7 @@ namespace API_SERVER.Controllers
         //TODO (Controller) 下载头像
         [HttpGet("downloadAvatar")]
         public async Task<IActionResult> DownloadAvatar(
-            [FromQuery] string userID)
+            [FromBody] string userID)
         {
             var tuple = await service.GetAvatarAsync(userID);
             if (tuple.Item1 == Values.GetAvatarResult.Succeed)
@@ -47,6 +47,43 @@ namespace API_SERVER.Controllers
                 var stream = tuple.Item2;
                 return File(stream, tuple.Item3.ToString(), tuple.Item4);
             }
+            return Ok();
+        }
+
+
+        //TODO 代课单——发布
+        public async Task<IActionResult> ReleaseCource(string submitData)
+        {
+            return Ok();
+        }
+
+        //TODO 代课单——收藏
+        public async Task<IActionResult> LikeCource(string submitData)
+        {
+            return Ok();
+        }
+
+        //TODO 代课单——接收
+        public async Task<IActionResult> ReceiveCource(string submitData)
+        {
+            return Ok();
+        }
+
+        //TODO 二手物品——发布
+        public async Task<IActionResult> ReleaseFleaOBJ(string submitData)
+        {
+            return Ok();
+        }
+
+        //TODO 二手物品——收藏
+        public async Task<IActionResult> LikeFleaOBJ(string submitData)
+        {
+            return Ok();
+        }
+
+        //TODO 二手物品——购买
+        public async Task<IActionResult> ReceiveFleaOBJ(string submitData)
+        {
             return Ok();
         }
     }

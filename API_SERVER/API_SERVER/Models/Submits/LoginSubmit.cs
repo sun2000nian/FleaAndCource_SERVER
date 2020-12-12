@@ -12,6 +12,6 @@ namespace API_SERVER.Models.Submits
         [Required]
         public string userID { get; set; }
         [Required]
-        public string Password { get; set; }
+        public string password { get; set; }
     }
 }
