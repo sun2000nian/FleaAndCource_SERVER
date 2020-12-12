@@ -26,7 +26,12 @@ namespace API_SERVER.Models.Users
         public string qq { get; set; }
         public string studentID { get; set; }
 
-        public ICollection<CourceModel> courceObjects { get; set; }
-        public ICollection<FleaObjectModel> fleaObjects { get; set; }
+        public ICollection<CourceModel> courceObjects_Launched { get; set; }
+        public ICollection<CourceModel> courceObjects_Received { get; set; }
+        public ICollection<CourceModel> courceObjects_Liked { get; set; }
+        public ICollection<FleaObjectModel> fleaObjects_Launched { get; set; }
+        public ICollection<FleaObjectModel> fleaObjects_Received { get; set; }
+        public ICollection<FleaObjectModel> fleaObjects_Liked { get; set; }
+
     }
 }

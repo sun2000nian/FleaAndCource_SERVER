@@ -18,21 +18,35 @@ namespace API_SERVER.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<PersonalData>().ToTable("UserData");
-            modelBuilder.Entity<CourceModel>(entity => {
-                entity.HasOne(p => p.sponsorID)
-                .WithMany(p => p.courceObjects);
+            modelBuilder.Entity<PersonalData>();
+            modelBuilder.Entity<CourceModel>(entity =>
+            {
+                entity.HasOne(p => p.sponsor)
+                .WithMany(p => p.courceObjects_Launched)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasForeignKey(p => p.sponsorID_FK);
 
-                entity.HasOne(p => p.receiverID)
-                .WithMany(p => p.courceObjects);
+                entity.HasOne(p => p.receiver)
+                .WithMany(p => p.courceObjects_Received)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasForeignKey(p => p.receiverID_FK);
+
+                entity.HasMany(p => p.likedUserID)
+                .WithMany(p => p.courceObjects_Liked);
             });
+            
+            modelBuilder.Entity<FleaObjectModel>(entity =>
+            {
+                entity.HasOne(p => p.sponsor)
+                .WithMany(p => p.fleaObjects_Launched)
+                .HasForeignKey(p => p.sponsorID_FK);
 
-            modelBuilder.Entity<FleaObjectModel>(entity => {
-                entity.HasOne(p => p.sponsorID)
-                .WithMany(p => p.fleaObjects);
+                entity.HasOne(p => p.receiver)
+                .WithMany(p => p.fleaObjects_Received)
+                .HasForeignKey(p => p.receiverID_FK);
 
-                entity.HasOne(p => p.receiverID)
-                .WithMany(p => p.fleaObjects);
+                entity.HasMany(p => p.likedUserID)
+                .WithMany(p => p.fleaObjects_Liked);
             });
 
             base.OnModelCreating(modelBuilder);
