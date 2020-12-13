@@ -21,11 +21,16 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("API_SERVER.Models.Datas.CourceModel", b =>
                 {
-                    b.Property<string>("orderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("orderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("creaTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("displayName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("receiverID_FK")
                         .HasColumnType("nvarchar(450)");
@@ -44,11 +49,16 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("API_SERVER.Models.Datas.FleaObjectModel", b =>
                 {
-                    b.Property<string>("orderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("orderID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("creaTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("displayName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("receiverID_FK")
                         .HasColumnType("nvarchar(450)");
@@ -101,8 +111,8 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("CourceModelPersonalData", b =>
                 {
-                    b.Property<string>("courceObjects_LikedorderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("courceObjects_LikedorderID")
+                        .HasColumnType("int");
 
                     b.Property<string>("likedUserIDuserID")
                         .HasColumnType("nvarchar(450)");
@@ -116,8 +126,8 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("FleaObjectModelPersonalData", b =>
                 {
-                    b.Property<string>("fleaObjects_LikedorderID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("fleaObjects_LikedorderID")
+                        .HasColumnType("int");
 
                     b.Property<string>("likedUserIDuserID")
                         .HasColumnType("nvarchar(450)");

@@ -11,8 +11,10 @@ namespace API_SERVER.Models.Datas
     public class BaseOrderModel
     {
         [Key]
-        public string orderID { get; set; }
+        public int orderID { get; set; }
         public DateTime creaTime { get; set; }
+
+        public string displayName { get; set; }
 
         public string sponsorID_FK { get; set; }
         [ForeignKey("sponsorID_FK")]

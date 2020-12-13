@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace API_SERVER.Data
 {
-    public class UsersAuthorizationDbContext:DbContext
+    public class UsersAuthorizationDbContext : DbContext
     {
         public UsersAuthorizationDbContext(DbContextOptions<UsersAuthorizationDbContext> options)
             : base(options)

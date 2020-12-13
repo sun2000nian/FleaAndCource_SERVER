@@ -1,10 +1,12 @@
 ﻿using API_SERVER.Models;
+using API_SERVER.Models.Datas;
 using API_SERVER.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace API_SERVER.Controllers
@@ -14,10 +16,12 @@ namespace API_SERVER.Controllers
     public class PersonalInfoController : Controller
     {
         private AccountService service { get; set; }
+        private PersonalInfoService infoService { get; set; }
 
-        public PersonalInfoController(AccountService accountService)
+        public PersonalInfoController(AccountService accountService, PersonalInfoService personalInfoService)
         {
             service = accountService;
+            infoService = personalInfoService;
         }
 
         //TODO:(Controller) 更新头像(待测试)
@@ -51,9 +55,21 @@ namespace API_SERVER.Controllers
         }
 
 
-        //TODO 代课单——发布
-        public async Task<IActionResult> ReleaseCource(string submitData)
+        //随机获取代课单
+        [HttpGet("getCource")]
+        public async Task<IActionResult> GetRandomCource()
         {
+            List<CourceModel> cources = await infoService.GetRandomCource();
+            return Ok(JsonSerializer.Serialize(cources));
+        }
+
+        [HttpPost("releaseCource")]
+        //TODO 代课单——发布
+        public async Task<IActionResult> ReleaseCource(
+            [FromForm] string userID,
+            [FromForm] string CourceData)
+        {
+            await infoService.ReleaseCource(userID,CourceData);
             return Ok();
         }
 
@@ -66,12 +82,24 @@ namespace API_SERVER.Controllers
         //TODO 代课单——接收
         public async Task<IActionResult> ReceiveCource(string submitData)
         {
+            
             return Ok();
         }
 
-        //TODO 二手物品——发布
-        public async Task<IActionResult> ReleaseFleaOBJ(string submitData)
+        //随机获取二手商品
+        [HttpGet("getFleaOBJ")]
+        public async Task<IActionResult> GetRandomFleaOBJ()
         {
+            List<FleaObjectModel> objs = await infoService.GetRandomFleaOBJ();
+            return Ok(JsonSerializer.Serialize(objs));
+        }
+        [HttpPost("releaseFleaObj")]
+        //TODO 二手物品——发布
+        public async Task<IActionResult> ReleaseFleaOBJ(
+            [FromForm] string userID,
+            [FromForm] string FleaObjData)
+        {
+            await infoService.ReleaseFleaOBJ(userID, FleaObjData);
             return Ok();
         }
 
