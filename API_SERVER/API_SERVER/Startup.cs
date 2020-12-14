@@ -15,6 +15,7 @@ using Microsoft.EntityFrameworkCore.SqlServer;
 using API_SERVER.Data;
 using API_SERVER.Services;
 using Microsoft.AspNetCore.Http.Features;
+using Newtonsoft.Json;
 
 namespace API_SERVER
 {
@@ -43,6 +44,11 @@ namespace API_SERVER
             services.AddDbContext<ServerSideUserDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
+            services.AddMvc().AddJsonOptions(o =>
+            {
+                o.JsonSerializerOptions.PropertyNamingPolicy = null;
+                o.JsonSerializerOptions.DictionaryKeyPolicy = null;
+            });
             /*
             services.Configure<FormOptions>(options =>
             {

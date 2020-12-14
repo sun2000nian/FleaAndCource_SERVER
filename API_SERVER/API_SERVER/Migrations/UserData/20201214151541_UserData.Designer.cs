@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201214140128_UserData")]
+    [Migration("20201214151541_UserData")]
     partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,17 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("receiveruserID")
+                    b.Property<string>("receiver")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("sponsoruserID")
+                    b.Property<string>("sponsor")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("orderID");
 
-                    b.HasIndex("receiveruserID");
+                    b.HasIndex("receiver");
 
-                    b.HasIndex("sponsoruserID");
+                    b.HasIndex("sponsor");
 
                     b.ToTable("courceObjectsDb");
                 });
@@ -74,17 +74,17 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("receiveruserID")
+                    b.Property<string>("receiver")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("sponsoruserID")
+                    b.Property<string>("sponsor")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("orderID");
 
-                    b.HasIndex("receiveruserID");
+                    b.HasIndex("receiver");
 
-                    b.HasIndex("sponsoruserID");
+                    b.HasIndex("sponsor");
 
                     b.ToTable("fleaObjectsDb");
                 });
@@ -155,34 +155,34 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("API_SERVER.Models.Datas.CourceModel", b =>
                 {
-                    b.HasOne("API_SERVER.Models.Users.PersonalData", "receiver")
+                    b.HasOne("API_SERVER.Models.Users.PersonalData", "receiverData")
                         .WithMany("courceObjects_Received")
-                        .HasForeignKey("receiveruserID")
+                        .HasForeignKey("receiver")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsor")
+                    b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsorData")
                         .WithMany("courceObjects_Launched")
-                        .HasForeignKey("sponsoruserID")
+                        .HasForeignKey("sponsor")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("receiver");
+                    b.Navigation("receiverData");
 
-                    b.Navigation("sponsor");
+                    b.Navigation("sponsorData");
                 });
 
             modelBuilder.Entity("API_SERVER.Models.Datas.FleaObjectModel", b =>
                 {
-                    b.HasOne("API_SERVER.Models.Users.PersonalData", "receiver")
+                    b.HasOne("API_SERVER.Models.Users.PersonalData", "receiverData")
                         .WithMany("fleaObjects_Received")
-                        .HasForeignKey("receiveruserID");
+                        .HasForeignKey("receiver");
 
-                    b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsor")
+                    b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsorData")
                         .WithMany("fleaObjects_Launched")
-                        .HasForeignKey("sponsoruserID");
+                        .HasForeignKey("sponsor");
 
-                    b.Navigation("receiver");
+                    b.Navigation("receiverData");
 
-                    b.Navigation("sponsor");
+                    b.Navigation("sponsorData");
                 });
 
             modelBuilder.Entity("CourceModelPersonalData", b =>

@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[1.10.9, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
             "System.IO.Abstractions": {
               "target": "Package",
               "version": "[13.2.5, )"

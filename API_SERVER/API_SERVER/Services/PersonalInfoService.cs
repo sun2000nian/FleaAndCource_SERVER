@@ -59,7 +59,7 @@ namespace API_SERVER.Services
         public async Task<List<FleaObjectModel>> GetRandomFleaOBJ()
         {
             //返回10个未完成的订单
-            return fleaObjectsDb.Include(p => p.receiver).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
+            return fleaObjectsDb.Include(p=>p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 二手物品——发布

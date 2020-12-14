@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace API_SERVER.Models.Datas
@@ -16,12 +17,17 @@ namespace API_SERVER.Models.Datas
 
         public string displayName { get; set; }
 
-        //public string sponsorID_FK { get; set; }
-        //[ForeignKey("sponsorID_FK")]
-        public PersonalData sponsor { get; set; }
-        //public string receiverID_FK { get; set; }
-        //[ForeignKey("receiverID_FK")]
-        public PersonalData receiver { get; set; }
+        [JsonPropertyName("sponsor")]
+        public string sponsor { get; set; }
+        [JsonIgnore]
+        [ForeignKey("sponsor")]
+        public PersonalData sponsorData { get; set; }
+
+        [JsonPropertyName("receiver")]
+        public string receiver { get; set; }
+        [JsonIgnore]
+        [ForeignKey("receiver")]
+        public PersonalData receiverData { get; set; }
         public ICollection<PersonalData> likedUserID { get; set; }
 
         //TODO 添加关闭属性

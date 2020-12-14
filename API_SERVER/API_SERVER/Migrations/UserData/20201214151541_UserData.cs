@@ -34,8 +34,8 @@ namespace API_SERVER.Migrations.UserData
                         .Annotation("SqlServer:Identity", "1, 1"),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    sponsoruserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    receiveruserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    receiver = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     isClosed = table.Column<bool>(type: "bit", nullable: false),
                     closeTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -43,14 +43,14 @@ namespace API_SERVER.Migrations.UserData
                 {
                     table.PrimaryKey("PK_courceObjectsDb", x => x.orderID);
                     table.ForeignKey(
-                        name: "FK_courceObjectsDb_UserDataDb_receiveruserID",
-                        column: x => x.receiveruserID,
+                        name: "FK_courceObjectsDb_UserDataDb_receiver",
+                        column: x => x.receiver,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_courceObjectsDb_UserDataDb_sponsoruserID",
-                        column: x => x.sponsoruserID,
+                        name: "FK_courceObjectsDb_UserDataDb_sponsor",
+                        column: x => x.sponsor,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
                         onDelete: ReferentialAction.Restrict);
@@ -64,8 +64,8 @@ namespace API_SERVER.Migrations.UserData
                         .Annotation("SqlServer:Identity", "1, 1"),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    sponsoruserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    receiveruserID = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    receiver = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     isClosed = table.Column<bool>(type: "bit", nullable: false),
                     closeTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -73,14 +73,14 @@ namespace API_SERVER.Migrations.UserData
                 {
                     table.PrimaryKey("PK_fleaObjectsDb", x => x.orderID);
                     table.ForeignKey(
-                        name: "FK_fleaObjectsDb_UserDataDb_receiveruserID",
-                        column: x => x.receiveruserID,
+                        name: "FK_fleaObjectsDb_UserDataDb_receiver",
+                        column: x => x.receiver,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_fleaObjectsDb_UserDataDb_sponsoruserID",
-                        column: x => x.sponsoruserID,
+                        name: "FK_fleaObjectsDb_UserDataDb_sponsor",
+                        column: x => x.sponsor,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
                         onDelete: ReferentialAction.Restrict);
@@ -140,14 +140,14 @@ namespace API_SERVER.Migrations.UserData
                 column: "likedUserIDuserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_courceObjectsDb_receiveruserID",
+                name: "IX_courceObjectsDb_receiver",
                 table: "courceObjectsDb",
-                column: "receiveruserID");
+                column: "receiver");
 
             migrationBuilder.CreateIndex(
-                name: "IX_courceObjectsDb_sponsoruserID",
+                name: "IX_courceObjectsDb_sponsor",
                 table: "courceObjectsDb",
-                column: "sponsoruserID");
+                column: "sponsor");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FleaObjectModelPersonalData_likedUserIDuserID",
@@ -155,14 +155,14 @@ namespace API_SERVER.Migrations.UserData
                 column: "likedUserIDuserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_fleaObjectsDb_receiveruserID",
+                name: "IX_fleaObjectsDb_receiver",
                 table: "fleaObjectsDb",
-                column: "receiveruserID");
+                column: "receiver");
 
             migrationBuilder.CreateIndex(
-                name: "IX_fleaObjectsDb_sponsoruserID",
+                name: "IX_fleaObjectsDb_sponsor",
                 table: "fleaObjectsDb",
-                column: "sponsoruserID");
+                column: "sponsor");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
