@@ -32,10 +32,12 @@ namespace API_SERVER.Migrations.UserData
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    creaTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsorID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    receiverID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    receiverID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    isClosed = table.Column<bool>(type: "bit", nullable: false),
+                    closeTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,10 +62,12 @@ namespace API_SERVER.Migrations.UserData
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    creaTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsorID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    receiverID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    receiverID_FK = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    isClosed = table.Column<bool>(type: "bit", nullable: false),
+                    closeTime = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {

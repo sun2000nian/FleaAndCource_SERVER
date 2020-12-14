@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201213182036_UserData")]
+    [Migration("20201214120137_UserData")]
     partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,11 +28,17 @@ namespace API_SERVER.Migrations.UserData
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("creaTime")
+                    b.Property<DateTime>("closeTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("createTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("displayName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isClosed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("receiverID_FK")
                         .HasColumnType("nvarchar(450)");
@@ -56,11 +62,17 @@ namespace API_SERVER.Migrations.UserData
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<DateTime>("creaTime")
+                    b.Property<DateTime>("closeTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("createTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("displayName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isClosed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("receiverID_FK")
                         .HasColumnType("nvarchar(450)");
