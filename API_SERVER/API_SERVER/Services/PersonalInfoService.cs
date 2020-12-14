@@ -25,7 +25,7 @@ namespace API_SERVER.Services
 
         public async Task<List<CourceModel>> GetRandomCource()
         {
-            return courceObjectsDb.OrderBy(r => r.creaTime).Take(10).ToList();
+            return courceObjectsDb.OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 代课单——发布
@@ -59,7 +59,7 @@ namespace API_SERVER.Services
         public async Task<List<FleaObjectModel>> GetRandomFleaOBJ()
         {
             //返回10个未完成的订单
-            return fleaObjectsDb.Include(p => p.receiver == null).OrderBy(r => r.creaTime).Take(10).ToList();
+            return fleaObjectsDb.Include(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 二手物品——发布
@@ -68,7 +68,7 @@ namespace API_SERVER.Services
             try
             {
                 FleaObjectModel obj = JsonSerializer.Deserialize<FleaObjectModel>(ObjData);
-                obj.creaTime = DateTime.Now;
+                obj.createTime = DateTime.Now;
                 PersonalData user = UserDataDb.Include(p => p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
                 user.fleaObjects_Launched.Add(obj);
