@@ -23,5 +23,7 @@ namespace API_SERVER.Models.Datas
         [ForeignKey("receiverID_FK")]
         public PersonalData receiver { get; set; }
         public ICollection<PersonalData> likedUserID { get; set; }
+
+        //TODO 添加关闭属性
     }
 }

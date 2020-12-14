@@ -74,27 +74,29 @@ namespace API_SERVER.Controllers
         }
 
         //TODO 代课单——收藏
+        [HttpPost("likeCource")]
         public async Task<IActionResult> LikeCource(string submitData)
         {
             return Ok();
         }
 
         //TODO 代课单——接收
+        [HttpPost("receiveCource")]
         public async Task<IActionResult> ReceiveCource(string submitData)
         {
             
             return Ok();
         }
 
-        //随机获取二手商品
+        //TEST 随机获取二手商品
         [HttpGet("getFleaOBJ")]
         public async Task<IActionResult> GetRandomFleaOBJ()
         {
             List<FleaObjectModel> objs = await infoService.GetRandomFleaOBJ();
             return Ok(JsonSerializer.Serialize(objs));
         }
-        [HttpPost("releaseFleaObj")]
-        //TODO 二手物品——发布
+        [HttpPost("releaseFleaOBJ")]
+        //TEST 二手物品——发布
         public async Task<IActionResult> ReleaseFleaOBJ(
             [FromForm] string userID,
             [FromForm] string FleaObjData)
@@ -104,14 +106,31 @@ namespace API_SERVER.Controllers
         }
 
         //TODO 二手物品——收藏
-        public async Task<IActionResult> LikeFleaOBJ(string submitData)
+        [HttpPost("likeFleaOBJ")]
+        public async Task<IActionResult> LikeFleaOBJ(
+            [FromForm] string userID,
+            [FromForm] int objectID)
         {
+            infoService.LikeFleaOBJ(userID, objectID);
+            return Ok();
+        }
+
+        [HttpPost("likeFleaOBJcancle")]
+        public async Task<IActionResult> LikeFleaOBJ_Cancle(
+            [FromForm] string userID,
+            [FromForm] int objectID)
+        {
+            infoService.CancleLiked(userID, objectID);
             return Ok();
         }
 
         //TODO 二手物品——购买
-        public async Task<IActionResult> ReceiveFleaOBJ(string submitData)
+        [HttpPost("perchaseFleaOBJ")]
+        public async Task<IActionResult> ReceiveFleaOBJ(
+            [FromForm] string userID,
+            [FromForm] int objectID)
         {
+            await infoService.ReceiveFleaOBJ(userID, objectID);
             return Ok();
         }
     }

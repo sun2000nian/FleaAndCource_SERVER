@@ -29,7 +29,7 @@ namespace API_SERVER.Services
         }
 
         //TODO 代课单——发布
-        public async Task ReleaseCource(string userID,string submitData)
+        public async Task ReleaseCource(string userID, string submitData)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace API_SERVER.Services
                 courceObjectsDb.Add(cource);
                 dataContext.SaveChanges();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e);
             }
@@ -55,22 +55,24 @@ namespace API_SERVER.Services
 
         }
 
+        //返回随机二手物品
         public async Task<List<FleaObjectModel>> GetRandomFleaOBJ()
         {
-            return fleaObjectsDb.OrderBy(r => r.creaTime).Take(10).ToList();
+            //返回10个未完成的订单
+            return fleaObjectsDb.Include(p => p.receiver == null).OrderBy(r => r.creaTime).Take(10).ToList();
         }
 
         //TODO 二手物品——发布
-        public async Task ReleaseFleaOBJ(string userID,string ObjData)
+        public async Task ReleaseFleaOBJ(string userID, string ObjData)
         {
             try
             {
                 FleaObjectModel obj = JsonSerializer.Deserialize<FleaObjectModel>(ObjData);
                 obj.creaTime = DateTime.Now;
-                PersonalData user = UserDataDb.Include(p=>p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
                 user.fleaObjects_Launched.Add(obj);
-                
+
                 //fleaObjectsDb.Add(obj);
                 UserDataDb.Update(user);
                 dataContext.SaveChanges();
@@ -82,15 +84,59 @@ namespace API_SERVER.Services
         }
 
         //TODO 二手物品——收藏
-        public async Task LikeFleaOBJ(string submitData)
+        public async Task LikeFleaOBJ(string userID, int objectID)
         {
+            try
+            {
+                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Liked).Single(p => p.userID == userID);
+                if (user == null) return;
+                FleaObjectModel fleaObject = fleaObjectsDb.Single(p => p.orderID == objectID);
+                if (fleaObject == null) return;
+                user.fleaObjects_Liked.Add(fleaObject);
+                UserDataDb.Update(user);
+                dataContext.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
+        //
+        public async Task CancleLiked(string userID,int objectID)
+        {
+            try
+            {
+                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Liked).Single(p => p.userID == userID);
+                if (user == null) return;
+                FleaObjectModel fleaObject = user.fleaObjects_Liked.Single(p => p.orderID == objectID);
+                if (fleaObject == null) return;
+                user.fleaObjects_Liked.Remove(fleaObject);
+                UserDataDb.Update(user);
+                dataContext.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         //TODO 二手物品——购买
-        public async Task ReceiveFleaOBJ(string submitData)
+        public async Task ReceiveFleaOBJ(string userID, int objectID)
         {
+            try
+            {
+                FleaObjectModel obj = fleaObjectsDb.Single(p => p.orderID == objectID);
+                PersonalData user = UserDataDb.Single(p => p.userID == userID);
+                if (obj != null && user != null)
+                {
 
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
     }
 }
