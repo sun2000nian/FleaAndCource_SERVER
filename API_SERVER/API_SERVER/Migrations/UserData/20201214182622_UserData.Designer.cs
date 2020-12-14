@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201214151541_UserData")]
+    [Migration("20201214182622_UserData")]
     partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

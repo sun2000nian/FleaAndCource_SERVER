@@ -28,7 +28,16 @@ namespace API_SERVER.Models.Datas
         [JsonIgnore]
         [ForeignKey("receiver")]
         public PersonalData receiverData { get; set; }
+
+        [JsonIgnore]
         public ICollection<PersonalData> likedUserID { get; set; }
+        public int likedUserCount
+        {
+            get
+            {
+                return likedUserID.Count;
+            }
+        }
 
         //TODO 添加关闭属性
         public bool isClosed { get; set; }

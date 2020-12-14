@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+//using Newtonsoft.Json;
 
 namespace API_SERVER.Controllers
 {
@@ -61,6 +62,11 @@ namespace API_SERVER.Controllers
         {
             List<CourceModel> cources = await infoService.GetRandomCource();
             return Ok(JsonSerializer.Serialize(cources));
+            /*
+            return Ok(JsonConvert.SerializeObject(cources,new JsonSerializerSettings { 
+                MaxDepth=2,
+                ReferenceLoopHandling=ReferenceLoopHandling.Ignore
+            }));*/
         }
 
         [HttpPost("releaseCource")]
@@ -94,6 +100,13 @@ namespace API_SERVER.Controllers
         {
             List<FleaObjectModel> objs = await infoService.GetRandomFleaOBJ();
             return Ok(JsonSerializer.Serialize(objs));
+            /*
+            return Ok(JsonConvert.SerializeObject(objs, new JsonSerializerSettings
+            {
+                MaxDepth = 1,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            }));
+            */
         }
         [HttpPost("releaseFleaOBJ")]
         //TEST 二手物品——发布
@@ -111,7 +124,7 @@ namespace API_SERVER.Controllers
             [FromForm] string userID,
             [FromForm] int objectID)
         {
-            infoService.LikeFleaOBJ(userID, objectID);
+            await infoService.LikeFleaOBJ(userID, objectID);
             return Ok();
         }
 
@@ -120,7 +133,7 @@ namespace API_SERVER.Controllers
             [FromForm] string userID,
             [FromForm] int objectID)
         {
-            infoService.CancleLiked(userID, objectID);
+            await infoService.CancleFleaLiked(userID, objectID);
             return Ok();
         }
 
@@ -130,7 +143,7 @@ namespace API_SERVER.Controllers
             [FromForm] string userID,
             [FromForm] int objectID)
         {
-            await infoService.ReceiveFleaOBJ(userID, objectID);
+            await infoService.PerchaseFleaOBJ(userID, objectID);
             return Ok();
         }
     }
