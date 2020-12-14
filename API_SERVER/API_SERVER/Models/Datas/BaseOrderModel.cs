@@ -16,11 +16,11 @@ namespace API_SERVER.Models.Datas
 
         public string displayName { get; set; }
 
-        public string sponsorID_FK { get; set; }
-        [ForeignKey("sponsorID_FK")]
+        //public string sponsorID_FK { get; set; }
+        //[ForeignKey("sponsorID_FK")]
         public PersonalData sponsor { get; set; }
-        public string receiverID_FK { get; set; }
-        [ForeignKey("receiverID_FK")]
+        //public string receiverID_FK { get; set; }
+        //[ForeignKey("receiverID_FK")]
         public PersonalData receiver { get; set; }
         public ICollection<PersonalData> likedUserID { get; set; }
 

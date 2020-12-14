@@ -23,13 +23,13 @@ namespace API_SERVER.Data
             {
                 entity.HasOne(p => p.sponsor)
                 .WithMany(p => p.courceObjects_Launched)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasForeignKey(p => p.sponsorID_FK);
+                .OnDelete(DeleteBehavior.Restrict);
+                //.HasForeignKey(p => p.sponsorID_FK);
 
                 entity.HasOne(p => p.receiver)
                 .WithMany(p => p.courceObjects_Received)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasForeignKey(p => p.receiverID_FK);
+                .OnDelete(DeleteBehavior.Restrict);
+                //.HasForeignKey(p => p.receiverID_FK);
 
                 entity.HasMany(p => p.likedUserID)
                 .WithMany(p => p.courceObjects_Liked);
@@ -38,12 +38,12 @@ namespace API_SERVER.Data
             modelBuilder.Entity<FleaObjectModel>(entity =>
             {
                 entity.HasOne(p => p.sponsor)
-                .WithMany(p => p.fleaObjects_Launched)
-                .HasForeignKey(p => p.sponsorID_FK);
+                .WithMany(p => p.fleaObjects_Launched);
+                //.HasForeignKey(p => p.sponsorID_FK);
 
                 entity.HasOne(p => p.receiver)
-                .WithMany(p => p.fleaObjects_Received)
-                .HasForeignKey(p => p.receiverID_FK);
+                .WithMany(p => p.fleaObjects_Received);
+                //.HasForeignKey(p => p.receiverID_FK);
 
                 entity.HasMany(p => p.likedUserID)
                 .WithMany(p => p.fleaObjects_Liked);

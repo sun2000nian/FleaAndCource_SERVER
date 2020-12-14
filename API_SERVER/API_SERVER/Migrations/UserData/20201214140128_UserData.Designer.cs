@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201214120137_UserData")]
+    [Migration("20201214140128_UserData")]
     partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,17 +40,17 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("receiverID_FK")
+                    b.Property<string>("receiveruserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("sponsorID_FK")
+                    b.Property<string>("sponsoruserID")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("orderID");
 
-                    b.HasIndex("receiverID_FK");
+                    b.HasIndex("receiveruserID");
 
-                    b.HasIndex("sponsorID_FK");
+                    b.HasIndex("sponsoruserID");
 
                     b.ToTable("courceObjectsDb");
                 });
@@ -74,17 +74,17 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("receiverID_FK")
+                    b.Property<string>("receiveruserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("sponsorID_FK")
+                    b.Property<string>("sponsoruserID")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("orderID");
 
-                    b.HasIndex("receiverID_FK");
+                    b.HasIndex("receiveruserID");
 
-                    b.HasIndex("sponsorID_FK");
+                    b.HasIndex("sponsoruserID");
 
                     b.ToTable("fleaObjectsDb");
                 });
@@ -157,12 +157,12 @@ namespace API_SERVER.Migrations.UserData
                 {
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "receiver")
                         .WithMany("courceObjects_Received")
-                        .HasForeignKey("receiverID_FK")
+                        .HasForeignKey("receiveruserID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsor")
                         .WithMany("courceObjects_Launched")
-                        .HasForeignKey("sponsorID_FK")
+                        .HasForeignKey("sponsoruserID")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("receiver");
@@ -174,11 +174,11 @@ namespace API_SERVER.Migrations.UserData
                 {
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "receiver")
                         .WithMany("fleaObjects_Received")
-                        .HasForeignKey("receiverID_FK");
+                        .HasForeignKey("receiveruserID");
 
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsor")
                         .WithMany("fleaObjects_Launched")
-                        .HasForeignKey("sponsorID_FK");
+                        .HasForeignKey("sponsoruserID");
 
                     b.Navigation("receiver");
 
