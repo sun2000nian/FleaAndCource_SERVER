@@ -12,7 +12,7 @@ namespace API_SERVER.Models.Datas
     {
         [Key]
         public int orderID { get; set; }
-        public DateTime creaTime { get; set; }
+        public DateTime createTime { get; set; }
 
         public string displayName { get; set; }
 
@@ -25,5 +25,8 @@ namespace API_SERVER.Models.Datas
         public ICollection<PersonalData> likedUserID { get; set; }
 
         //TODO 添加关闭属性
+        public bool isClosed { get; set; }
+
+        public DateTime closeTime { get; set; }
     }
 }
