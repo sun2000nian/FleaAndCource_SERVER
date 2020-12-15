@@ -34,7 +34,8 @@ namespace API_SERVER.Services
             try
             {
                 CourceModel obj = JsonSerializer.Deserialize<CourceModel>(courseData);
-                obj.createTime = DateTime.Now;
+                TimeZoneInfo timeZone = TimeZoneInfo.GetSystemTimeZones()[106];
+                obj.createTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
                 PersonalData user = UserDataDb.Include(p => p.courceObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
                 user.courceObjects_Launched.Add(obj);
@@ -96,7 +97,7 @@ namespace API_SERVER.Services
         public async Task<List<FleaObjectModel>> GetRandomFleaOBJ()
         {
             //返回10个未完成的订单
-            return fleaObjectsDb.Include(p=>p.likedUserID).Include(p=>p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
+            return fleaObjectsDb.Include(p => p.likedUserID).Include(p => p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 二手物品——发布
@@ -105,7 +106,8 @@ namespace API_SERVER.Services
             try
             {
                 FleaObjectModel obj = JsonSerializer.Deserialize<FleaObjectModel>(ObjData);
-                obj.createTime = DateTime.Now;
+                TimeZoneInfo timeZone = TimeZoneInfo.GetSystemTimeZones()[106];
+                obj.createTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
                 PersonalData user = UserDataDb.Include(p => p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
                 user.fleaObjects_Launched.Add(obj);
