@@ -264,13 +264,13 @@ namespace API_SERVER.Services
         }
 
         //TODO (Service)用户存在检查
-        public int UserExistanceCheck(string username)
+        public Values.UserExistance UserExistanceCheck(string username)
         {
             if (AuthorizationDb.Where(t => t.UserID == username).Count() != 0)
             {
-                return (int)Values.UserExistance.Exist;
+                return Values.UserExistance.Exist;
             }
-            return (int)Values.UserExistance.NotExist;
+            return Values.UserExistance.NotExist;
         }
     }
 }

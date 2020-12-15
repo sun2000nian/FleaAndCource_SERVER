@@ -33,10 +33,16 @@ namespace API_SERVER.Controllers
 
         //TODO (Controller)检查用户是否存在
         [HttpPost("usrchk")]
+        [ProducesResponseType(StatusCodes.Status302Found)]
         public async Task<IActionResult> UserExistanceCheck(
             [FromForm] string userID)
         {
-            return Ok(userID);
+            switch (service.UserExistanceCheck(userID))
+            {
+                case Values.UserExistance.Exist:return StatusCode(StatusCodes.Status302Found);
+                case Values.UserExistance.NotExist:return Ok();
+                default:return NoContent();
+            }
         }
 
         [HttpPost("login")]
