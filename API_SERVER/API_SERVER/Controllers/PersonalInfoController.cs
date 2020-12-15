@@ -81,8 +81,11 @@ namespace API_SERVER.Controllers
 
         //TODO 代课单——收藏
         [HttpPost("likeCource")]
-        public async Task<IActionResult> LikeCource(string submitData)
+        public async Task<IActionResult> LikeCource(
+            [FromForm] string userID,
+            [FromForm] int courceID)
         {
+
             return Ok();
         }
 
