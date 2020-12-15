@@ -25,7 +25,7 @@ namespace API_SERVER.Services
 
         public async Task<List<CourceModel>> GetRandomCource()
         {
-            return courceObjectsDb.OrderBy(r => r.createTime).Take(10).ToList();
+            return courceObjectsDb.Include(p => p.likedUserID).Include(p => p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 代课单——发布
