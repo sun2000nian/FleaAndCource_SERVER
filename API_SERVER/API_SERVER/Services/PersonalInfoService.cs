@@ -35,7 +35,7 @@ namespace API_SERVER.Services
             {
                 CourceModel obj = JsonSerializer.Deserialize<CourceModel>(courseData);
                 obj.createTime = DateTime.Now;
-                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courceObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
                 user.courceObjects_Launched.Add(obj);
 
@@ -54,7 +54,7 @@ namespace API_SERVER.Services
         {
             try
             {
-                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Liked).Single(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courceObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
                 CourceModel cource = courceObjectsDb.Single(p => p.orderID == courceID);
                 if (cource == null) return;
@@ -72,7 +72,7 @@ namespace API_SERVER.Services
         {
             try
             {
-                PersonalData user = UserDataDb.Include(p => p.fleaObjects_Liked).Single(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courceObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
                 CourceModel fleaObject = user.courceObjects_Liked.Single(p => p.orderID == courceID);
                 if (fleaObject == null) return;

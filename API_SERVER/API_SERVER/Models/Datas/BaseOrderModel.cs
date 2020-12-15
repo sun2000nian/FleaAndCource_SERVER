@@ -17,17 +17,40 @@ namespace API_SERVER.Models.Datas
 
         public string displayName { get; set; }
 
-        [JsonPropertyName("sponsor")]
+        [JsonIgnore]
         public string sponsor { get; set; }
         [JsonIgnore]
         [ForeignKey("sponsor")]
         public PersonalData sponsorData { get; set; }
 
-        [JsonPropertyName("receiver")]
+        [JsonPropertyName("sponsor")]
+        public string sponsorUserName
+        {
+            get
+            {
+                if (sponsorData.displayName != null)
+                    return sponsorData.displayName;
+                else return sponsorData.userID;
+            }
+        }
+
+        [JsonIgnore]
         public string receiver { get; set; }
         [JsonIgnore]
         [ForeignKey("receiver")]
         public PersonalData receiverData { get; set; }
+
+        [JsonPropertyName("receiver")]
+        public string receiverUserName
+        {
+            get
+            {
+                if (receiverData == null) return null;
+                if (receiverData.displayName != null)
+                    return receiverData.displayName;
+                else return receiverData.userID;
+            }
+        }
 
         [JsonIgnore]
         public ICollection<PersonalData> likedUserID { get; set; }
