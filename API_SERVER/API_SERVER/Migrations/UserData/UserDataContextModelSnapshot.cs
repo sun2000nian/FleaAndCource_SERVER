@@ -26,6 +26,15 @@ namespace API_SERVER.Migrations.UserData
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("closeTime")
                         .HasColumnType("datetime2");
 
@@ -71,6 +80,12 @@ namespace API_SERVER.Migrations.UserData
 
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("picturePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
 
                     b.Property<string>("receiver")
                         .HasColumnType("nvarchar(450)");

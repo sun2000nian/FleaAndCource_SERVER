@@ -32,6 +32,9 @@ namespace API_SERVER.Migrations.UserData
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -62,6 +65,8 @@ namespace API_SERVER.Migrations.UserData
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    picturePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    price = table.Column<double>(type: "float", nullable: false),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),

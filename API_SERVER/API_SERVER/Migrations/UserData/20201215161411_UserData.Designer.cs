@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201214182622_UserData")]
+    [Migration("20201215161411_UserData")]
     partial class UserData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,15 @@ namespace API_SERVER.Migrations.UserData
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("closeTime")
                         .HasColumnType("datetime2");
@@ -73,6 +82,12 @@ namespace API_SERVER.Migrations.UserData
 
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("picturePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("price")
+                        .HasColumnType("float");
 
                     b.Property<string>("receiver")
                         .HasColumnType("nvarchar(450)");
