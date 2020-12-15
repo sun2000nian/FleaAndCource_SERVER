@@ -143,9 +143,14 @@ namespace API_SERVER.Services
 
 
         //TODO:(Service)更改信息
-        public int UpdateInfo()
+        public Values.UserExistance UpdateInfo(string userData)
         {
-            return 0;
+            var newUserData = JsonSerializer.Deserialize<PersonalData>(userData);
+            var oldUserData = UserDataDb.Single(p => p.userID == newUserData.userID);
+            if (oldUserData == null) return Values.UserExistance.NotExist;
+            UserDataDb.Update(newUserData);
+            UserDataContext.SaveChanges();
+            return Values.UserExistance.Exist;
         }
 
         //TODO:(Service)接受头像图像(待完善)

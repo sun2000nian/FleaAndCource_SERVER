@@ -98,5 +98,15 @@ namespace API_SERVER.Controllers
                 default: return NoContent();
             }
         }
+
+        [HttpPost("updateInfo")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> UpdateUserData(
+            [FromForm] string userData)
+        {
+            service.UpdateInfo(userData);
+            return Ok();
+        }
     }
 }
