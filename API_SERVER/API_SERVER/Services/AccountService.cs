@@ -146,8 +146,9 @@ namespace API_SERVER.Services
         public Values.UserExistance UpdateInfo(string userData)
         {
             var newUserData = JsonSerializer.Deserialize<PersonalData>(userData);
-            var oldUserData = UserDataDb.Single(p => p.userID == newUserData.userID);
-            if (oldUserData == null) return Values.UserExistance.NotExist;
+            var userFind = UserDataDb.Where(p => p.userID == newUserData.userID).Count();
+            if (userFind == 0) return Values.UserExistance.NotExist;
+            //UserDataContext.Entry(oldUserData).State = EntityState.Detached;
             UserDataDb.Update(newUserData);
             UserDataContext.SaveChanges();
             return Values.UserExistance.Exist;

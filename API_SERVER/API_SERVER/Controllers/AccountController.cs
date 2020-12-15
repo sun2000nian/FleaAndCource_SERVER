@@ -105,8 +105,9 @@ namespace API_SERVER.Controllers
         public async Task<IActionResult> UpdateUserData(
             [FromForm] string userData)
         {
-            service.UpdateInfo(userData);
-            return Ok();
+            var result=service.UpdateInfo(userData);
+            if (result == Values.UserExistance.NotExist) return NoContent();
+            else return Ok();
         }
     }
 }
