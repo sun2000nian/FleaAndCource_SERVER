@@ -7,5 +7,7 @@ namespace API_SERVER.Models.Datas
 {
     public class FleaObjectModel : BaseOrderModel
     {
+        public string picturePath { get; set; }
+        public double price { get; set; }
     }
 }
