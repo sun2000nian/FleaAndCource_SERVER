@@ -63,3 +63,13 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Relea
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Release\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Release\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Release\netcoreapp3.1\API_SERVER.Views.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\bin\Release\netcoreapp3.1\API_SERVER.Views.pdb
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorAssemblyInfo.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorAssemblyInfo.cs
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.TagHelpers.input.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.TagHelpers.output.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorCoreGenerate.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\Razor\Pages\updateDownload.cshtml.g.cs
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorTargetAssemblyInfo.cs
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.Views.pdb

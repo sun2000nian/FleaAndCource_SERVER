@@ -46,4 +46,6 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docke
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\API_SERVER.Views.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\API_SERVER.Views.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Docker\publish\API_SERVER.deps.json
