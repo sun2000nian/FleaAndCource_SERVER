@@ -31,10 +31,12 @@ namespace API_SERVER
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddRazorPages();
             services.AddHttpClient();
             services.AddControllers();
             services.AddTransient<AccountService>();
             services.AddTransient<PersonalInfoService>();
+            //services.AddTransient<UpdateService>();
             services.AddDbContext<UsersAuthorizationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
@@ -74,9 +76,11 @@ namespace API_SERVER
 
             app.UseAuthorization();
 
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                //endpoints.MapRazorPages();
             });
         }
     }

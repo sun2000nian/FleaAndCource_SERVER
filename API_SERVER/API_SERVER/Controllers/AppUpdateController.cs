@@ -15,7 +15,7 @@ using System.Text.Json;
 namespace API_SERVER.Controllers
 {
 
-    [Route("/appupdate")]
+    [Route("/appupdate/")]
     [ApiController]
     public class AppUpdateController : ControllerBase
     {
@@ -63,6 +63,15 @@ namespace API_SERVER.Controllers
             updateInfoDb.Add(newUpdate);
             _context.SaveChanges();
             return Ok();
+        }
+        [HttpGet("downloadLatestVersion")]
+        public async Task<IActionResult> downloadPage()
+        {
+            var updateResponse = updateInfoDb.OrderByDescending(i => i.versionCode).FirstOrDefault();
+            //string page = "<html>\n<head>\n</head>\n<body>\n<a href=\"http://ip2.shiningball.cn:5000/download?filename=" + updateResponse.url + "\"> 下载 </a>\n</body>\n</html>";
+            string page = "http://ip2.shiningball.cn:5000/download?filename=" + updateResponse.url;
+
+            return StatusCode(200,page);
         }
     }
 }
