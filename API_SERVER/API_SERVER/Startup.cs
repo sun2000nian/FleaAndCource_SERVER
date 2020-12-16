@@ -44,6 +44,9 @@ namespace API_SERVER
             services.AddDbContext<ServerSideUserDataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
                 );
+            services.AddDbContext<AppUpdateContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UserDataConnection"))
+                );
             services.AddMvc().AddJsonOptions(o =>
             {
                 o.JsonSerializerOptions.PropertyNamingPolicy = null;
