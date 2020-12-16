@@ -54,8 +54,10 @@ namespace STORAGE_SERVER.Controllers
             if (System.IO.File.Exists(filePath))
             {
                 string ContentType;
+                string ExtensionName;
                 new FileExtensionContentTypeProvider().TryGetContentType(filename, out ContentType);
-                var ExtensionName = MimeTypeMap.GetExtension(ContentType);
+                if (ContentType == null) ExtensionName = filename.Substring(filename.IndexOf("."));
+                else ExtensionName = MimeTypeMap.GetExtension(ContentType);
                 MD5 md5 = MD5.Create();
                 var str = DateTime.UtcNow.ToString();
                 var byteArray = md5.ComputeHash(System.Text.Encoding.Default.GetBytes(str));

@@ -18,3 +18,5 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\o
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Debug\netcoreapp3.1\STORAGE_SERVER.dll
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Debug\netcoreapp3.1\STORAGE_SERVER.pdb
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Debug\netcoreapp3.1\STORAGE_SERVER.genruntimeconfig.cache
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\bin\Debug\netcoreapp3.1\MimeTypeMap.dll
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\STORAGE_SERVER\STORAGE_SERVER\obj\Debug\netcoreapp3.1\STORAGE_SERVER.csproj.CopyComplete
