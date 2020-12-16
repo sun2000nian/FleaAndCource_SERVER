@@ -36,7 +36,7 @@ namespace API_SERVER.Controllers
         [HttpGet]
         public async Task<IActionResult> getUpdate()
         {
-            var updateResponse = updateInfoDb.OrderBy(i => i.versionCode).FirstOrDefault();
+            var updateResponse = updateInfoDb.OrderByDescending(i => i.versionCode).FirstOrDefault();
             if (updateResponse == null) return NoContent();
             return Ok(JsonSerializer.Serialize(updateResponse));
         }
@@ -47,17 +47,18 @@ namespace API_SERVER.Controllers
             [FromForm] string content,
             [FromForm] IFormFile apkfile)
         {
+            string filename = versionName.Replace(".", "_") + apkfile.FileName.Substring(apkfile.FileName.IndexOf("."));
             AppUpdateInfoModel newUpdate = new AppUpdateInfoModel
             {
                 versionName = versionName,
                 content = content,
-                url = apkfile.FileName
+                url = filename
             };
 
             var stream = apkfile.OpenReadStream();
             MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
             multipartFormDataContent.Add(new StreamContent(stream), "file", "file");
-            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + versionName, multipartFormDataContent);
+            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + filename, multipartFormDataContent);
 
             updateInfoDb.Add(newUpdate);
             _context.SaveChanges();
