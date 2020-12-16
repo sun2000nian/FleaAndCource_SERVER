@@ -32,13 +32,22 @@ namespace API_SERVER.Controllers
             context = new UsersAuthorizationDbContext(options);
         }
 
-        [HttpGet("{upload}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> Get(string upload)
+        public async Task<IActionResult> Get()
         {
-
-            return Unauthorized(JsonSerializer.Serialize(UserData.FirstOrDefault()));
+            string list = "";
+            for(int temp=0;temp< TimeZoneInfo.GetSystemTimeZones().Count; temp++)
+            {
+                list += '\n' + TimeZoneInfo.GetSystemTimeZones()[temp].Id+temp.ToString();
+            }
+            TimeSpan timeSpan = new TimeSpan(08, 00, 00);
+            TimeZoneInfo timeZone = TimeZoneInfo.CreateCustomTimeZone("China",
+                                                                       timeSpan,
+                                                                       "China",null);
+            var time = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
+            return Ok(timeZone.Id+time.ToString()+list.ToString());
         }
     }
 }

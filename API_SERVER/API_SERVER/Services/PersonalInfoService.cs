@@ -34,7 +34,10 @@ namespace API_SERVER.Services
             try
             {
                 CourceModel obj = JsonSerializer.Deserialize<CourceModel>(courseData);
-                TimeZoneInfo timeZone = TimeZoneInfo.GetSystemTimeZones()[106];
+                TimeSpan timeSpan = new TimeSpan(08, 00, 00);
+                TimeZoneInfo timeZone = TimeZoneInfo.CreateCustomTimeZone("China",
+                                                                           timeSpan,
+                                                                           "China", null);
                 obj.createTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
                 PersonalData user = UserDataDb.Include(p => p.courceObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
@@ -106,7 +109,10 @@ namespace API_SERVER.Services
             try
             {
                 FleaObjectModel obj = JsonSerializer.Deserialize<FleaObjectModel>(ObjData);
-                TimeZoneInfo timeZone = TimeZoneInfo.GetSystemTimeZones()[106];
+                TimeSpan timeSpan = new TimeSpan(08, 00, 00);
+                TimeZoneInfo timeZone = TimeZoneInfo.CreateCustomTimeZone("China",
+                                                                           timeSpan,
+                                                                           "China", null);
                 obj.createTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
                 PersonalData user = UserDataDb.Include(p => p.fleaObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
