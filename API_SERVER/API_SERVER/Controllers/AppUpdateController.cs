@@ -57,7 +57,7 @@ namespace API_SERVER.Controllers
             var stream = apkfile.OpenReadStream();
             MultipartFormDataContent multipartFormDataContent = new MultipartFormDataContent();
             multipartFormDataContent.Add(new StreamContent(stream), "file", "file");
-            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + apkfile.FileName, multipartFormDataContent);
+            HttpResponseMessage response = await _httpClient.PostAsync("http://ip2.shiningball.cn:5000/upload?filename=" + versionName, multipartFormDataContent);
 
             updateInfoDb.Add(newUpdate);
             _context.SaveChanges();
