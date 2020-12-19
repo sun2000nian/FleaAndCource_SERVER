@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace API_SERVER.Pages
 {
-    public class updateDownloadModel : PageModel
+    public class DownloadLatestVersionModel : PageModel
     {
         public string url { get; set; }
         private UpdateService service { get; set; }
-        public updateDownloadModel(UpdateService updateService)
+        public DownloadLatestVersionModel(UpdateService updateService)
         {
             url = updateService.downloadPage();
             service = updateService;

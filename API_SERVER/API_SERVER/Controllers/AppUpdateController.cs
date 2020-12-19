@@ -86,7 +86,7 @@ namespace API_SERVER.Controllers
             return Ok(JsonSerializer.Serialize(newUpdate));
         }
 
-        //已弃用,页面转至DownloadNewestVersion
+        //已弃用,页面转至DownloadlatestVersion
         [HttpGet("downloadLatestVersion")]
         public async Task<IActionResult> downloadPage()
         {
