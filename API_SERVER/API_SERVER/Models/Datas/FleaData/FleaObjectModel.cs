@@ -7,6 +7,7 @@ namespace API_SERVER.Models.Datas.FleaData
 {
     public class FleaObjectModel : BaseOrderModel
     {
+        public string title { get; set; }
         public string details { get; set; }
         public List<Picture> pictures { get; set; }
     }
