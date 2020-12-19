@@ -7,6 +7,12 @@ namespace API_SERVER.Models
 {
     public class Values
     {
+        public enum Cource_TimeType
+        {
+            TimeRange,
+            ClassTimeNum
+        }
+
         public enum RegisterCode
         {
             Success,//成功
