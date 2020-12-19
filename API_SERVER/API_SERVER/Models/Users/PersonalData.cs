@@ -1,4 +1,6 @@
 ﻿using API_SERVER.Models.Datas;
+using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.FleaData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

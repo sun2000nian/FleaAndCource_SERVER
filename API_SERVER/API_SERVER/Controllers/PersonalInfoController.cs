@@ -1,5 +1,7 @@
 ﻿using API_SERVER.Models;
 using API_SERVER.Models.Datas;
+using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.FleaData;
 using API_SERVER.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,7 @@
 ﻿using API_SERVER.Data;
 using API_SERVER.Models.Datas;
+using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.FleaData;
 using API_SERVER.Models.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
