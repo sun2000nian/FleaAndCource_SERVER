@@ -19,7 +19,7 @@ using System.Text.Encodings.Web;
 namespace API_SERVER.Controllers
 {
 
-    [Route("/appupdate/")]
+    [Route("/appupdate")]
     [ApiController]
     public class AppUpdateController : ControllerBase
     {
