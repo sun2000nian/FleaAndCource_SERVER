@@ -35,6 +35,7 @@ namespace API_SERVER.Migrations.UserData
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    isAccepted = table.Column<bool>(type: "bit", nullable: false),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -65,8 +66,8 @@ namespace API_SERVER.Migrations.UserData
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    picturePath = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    price = table.Column<double>(type: "float", nullable: false),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    details = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     createTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     displayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     sponsor = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -139,6 +140,28 @@ namespace API_SERVER.Migrations.UserData
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Picture",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Path = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FleaObjectModelorderID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Picture", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Picture_fleaObjectsDb_FleaObjectModelorderID",
+                        column: x => x.FleaObjectModelorderID,
+                        principalTable: "fleaObjectsDb",
+                        principalColumn: "orderID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CourceModelPersonalData_likedUserIDuserID",
                 table: "CourceModelPersonalData",
@@ -168,6 +191,11 @@ namespace API_SERVER.Migrations.UserData
                 name: "IX_fleaObjectsDb_sponsor",
                 table: "fleaObjectsDb",
                 column: "sponsor");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Picture_FleaObjectModelorderID",
+                table: "Picture",
+                column: "FleaObjectModelorderID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -177,6 +205,9 @@ namespace API_SERVER.Migrations.UserData
 
             migrationBuilder.DropTable(
                 name: "FleaObjectModelPersonalData");
+
+            migrationBuilder.DropTable(
+                name: "Picture");
 
             migrationBuilder.DropTable(
                 name: "courceObjectsDb");

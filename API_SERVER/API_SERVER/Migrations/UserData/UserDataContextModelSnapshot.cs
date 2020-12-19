@@ -19,7 +19,7 @@ namespace API_SERVER.Migrations.UserData
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.CourceModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.CourceData.CourceModel", b =>
                 {
                     b.Property<int>("orderID")
                         .ValueGeneratedOnAdd()
@@ -44,6 +44,9 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<string>("displayName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("isAccepted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
@@ -62,7 +65,7 @@ namespace API_SERVER.Migrations.UserData
                     b.ToTable("courceObjectsDb");
                 });
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.FleaObjectModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.FleaObjectModel", b =>
                 {
                     b.Property<int>("orderID")
                         .ValueGeneratedOnAdd()
@@ -75,23 +78,23 @@ namespace API_SERVER.Migrations.UserData
                     b.Property<DateTime>("createTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("details")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("displayName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isClosed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("picturePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("price")
-                        .HasColumnType("float");
-
                     b.Property<string>("receiver")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("sponsor")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("orderID");
 
@@ -100,6 +103,32 @@ namespace API_SERVER.Migrations.UserData
                     b.HasIndex("sponsor");
 
                     b.ToTable("fleaObjectsDb");
+                });
+
+            modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.Picture", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("FleaObjectModelorderID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("FleaObjectModelorderID");
+
+                    b.ToTable("Picture");
                 });
 
             modelBuilder.Entity("API_SERVER.Models.Users.PersonalData", b =>
@@ -166,7 +195,7 @@ namespace API_SERVER.Migrations.UserData
                     b.ToTable("FleaObjectModelPersonalData");
                 });
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.CourceModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.CourceData.CourceModel", b =>
                 {
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "receiverData")
                         .WithMany("courceObjects_Received")
@@ -183,7 +212,7 @@ namespace API_SERVER.Migrations.UserData
                     b.Navigation("sponsorData");
                 });
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.FleaObjectModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.FleaObjectModel", b =>
                 {
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "receiverData")
                         .WithMany("fleaObjects_Received")
@@ -198,9 +227,16 @@ namespace API_SERVER.Migrations.UserData
                     b.Navigation("sponsorData");
                 });
 
+            modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.Picture", b =>
+                {
+                    b.HasOne("API_SERVER.Models.Datas.FleaData.FleaObjectModel", null)
+                        .WithMany("pictures")
+                        .HasForeignKey("FleaObjectModelorderID");
+                });
+
             modelBuilder.Entity("CourceModelPersonalData", b =>
                 {
-                    b.HasOne("API_SERVER.Models.Datas.CourceModel", null)
+                    b.HasOne("API_SERVER.Models.Datas.CourceData.CourceModel", null)
                         .WithMany()
                         .HasForeignKey("courceObjects_LikedorderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -215,7 +251,7 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("FleaObjectModelPersonalData", b =>
                 {
-                    b.HasOne("API_SERVER.Models.Datas.FleaObjectModel", null)
+                    b.HasOne("API_SERVER.Models.Datas.FleaData.FleaObjectModel", null)
                         .WithMany()
                         .HasForeignKey("fleaObjects_LikedorderID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -226,6 +262,11 @@ namespace API_SERVER.Migrations.UserData
                         .HasForeignKey("likedUserIDuserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.FleaObjectModel", b =>
+                {
+                    b.Navigation("pictures");
                 });
 
             modelBuilder.Entity("API_SERVER.Models.Users.PersonalData", b =>
