@@ -20,7 +20,7 @@ namespace API_SERVER.Migrations.AppUpdate
 
             modelBuilder.Entity("API_SERVER.Models.AppUpdateInfoModel", b =>
                 {
-                    b.Property<int>("versionCode")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
@@ -31,10 +31,13 @@ namespace API_SERVER.Migrations.AppUpdate
                     b.Property<string>("url")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("versionCode")
+                        .HasColumnType("int");
+
                     b.Property<string>("versionName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("versionCode");
+                    b.HasKey("Id");
 
                     b.ToTable("updateInfo");
                 });

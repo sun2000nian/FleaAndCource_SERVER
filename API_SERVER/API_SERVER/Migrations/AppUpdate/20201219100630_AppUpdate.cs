@@ -10,15 +10,16 @@ namespace API_SERVER.Migrations.AppUpdate
                 name: "updateInfo",
                 columns: table => new
                 {
-                    versionCode = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    versionCode = table.Column<int>(type: "int", nullable: false),
                     url = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     versionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     content = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_updateInfo", x => x.versionCode);
+                    table.PrimaryKey("PK_updateInfo", x => x.Id);
                 });
         }
 

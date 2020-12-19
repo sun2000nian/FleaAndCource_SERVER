@@ -19,7 +19,7 @@ namespace API_SERVER.Services
             }
         }
 
-        UpdateService(AppUpdateContext updateContext)
+        public UpdateService(AppUpdateContext updateContext)
         {
             this._context = updateContext;
         }
