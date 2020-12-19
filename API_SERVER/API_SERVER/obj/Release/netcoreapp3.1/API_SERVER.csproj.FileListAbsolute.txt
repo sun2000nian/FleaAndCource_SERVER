@@ -70,6 +70,6 @@ C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Relea
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.TagHelpers.input.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.TagHelpers.output.cache
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorCoreGenerate.cache
-C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\Razor\Pages\updateDownload.cshtml.g.cs
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.RazorTargetAssemblyInfo.cs
 C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\API_SERVER.Views.pdb
+C:\Users\sun20\source\repos\FleaAndCource_SERVER\API_SERVER\API_SERVER\obj\Release\netcoreapp3.1\Razor\Pages\DownloadLatestVersion.cshtml.g.cs
