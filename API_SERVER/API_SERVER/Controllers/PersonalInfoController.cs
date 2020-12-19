@@ -117,7 +117,7 @@ namespace API_SERVER.Controllers
         //TEST 二手物品——发布
         public async Task<IActionResult> ReleaseFleaOBJ(
             [FromForm] string userID,
-            [FromForm] string FleaObjData)
+            [FromForm] string FleaObjData)//收图，收信息
         {
             await infoService.ReleaseFleaOBJ(userID, FleaObjData);
             return Ok();
