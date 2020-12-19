@@ -24,13 +24,13 @@ namespace API_SERVER.Services
             this._context = updateContext;
         }
 
-        public string downloadPage()
+        public Tuple<string,string,string> downloadContent()
         {
             var updateResponse = updateInfoDb.OrderByDescending(i => i.versionCode).FirstOrDefault();
             string page = "http://ip2.shiningball.cn:5000/download?filename=" + updateResponse.url;
             //string page = "<a href=\"http://ip2.shiningball.cn:5000/download?filename=" + updateResponse.url + "\"> 下载 </a>";
 
-            return page;
+            return new Tuple<string, string, string>(page, updateResponse.versionName, updateResponse.content);
         }
     }
 }

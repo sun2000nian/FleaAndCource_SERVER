@@ -2,5 +2,7 @@
 @model API_SERVER.Pages.DownloadLatestVersionModel
 
 @{
-    <a href="@Model.url">下载</a>
+    <a href="@Model.url">下载</a><br />
+    <a>版本：@Model.updateVersion</a><br />
+    <a>最后更新内容：@Model.updateContent</a>
 }
