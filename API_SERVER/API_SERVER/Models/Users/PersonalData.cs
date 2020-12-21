@@ -1,5 +1,5 @@
 ﻿using API_SERVER.Models.Datas;
-using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.CourseData;
 using API_SERVER.Models.Datas.FleaData;
 using System;
 using System.Collections.Generic;
@@ -28,9 +28,9 @@ namespace API_SERVER.Models.Users
         public string qq { get; set; }
         public string studentID { get; set; }
 
-        public ICollection<CourceModel> courceObjects_Launched { get; set; }
-        public ICollection<CourceModel> courceObjects_Received { get; set; }
-        public ICollection<CourceModel> courceObjects_Liked { get; set; }
+        public ICollection<CourseModel> courseObjects_Launched { get; set; }
+        public ICollection<CourseModel> courseObjects_Received { get; set; }
+        public ICollection<CourseModel> courseObjects_Liked { get; set; }
         public ICollection<FleaObjectModel> fleaObjects_Launched { get; set; }
         public ICollection<FleaObjectModel> fleaObjects_Received { get; set; }
         public ICollection<FleaObjectModel> fleaObjects_Liked { get; set; }

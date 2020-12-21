@@ -1,6 +1,6 @@
 ﻿using API_SERVER.Models;
 using API_SERVER.Models.Datas;
-using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.CourseData;
 using API_SERVER.Models.Datas.FleaData;
 using API_SERVER.Services;
 using Microsoft.AspNetCore.Http;
@@ -59,43 +59,60 @@ namespace API_SERVER.Controllers
 
 
         //随机获取代课单
-        [HttpGet("getCource")]
-        public async Task<IActionResult> GetRandomCource()
+        [HttpGet("getCourse")]
+        public async Task<IActionResult> GetRandomCourse()
         {
-            List<CourceModel> cources = await infoService.GetRandomCource();
-            return Ok(JsonSerializer.Serialize(cources));
+            List<CourseModel> courses = await infoService.GetRandomCourse();
+            return Ok(JsonSerializer.Serialize(courses));
             /*
-            return Ok(JsonConvert.SerializeObject(cources,new JsonSerializerSettings { 
+            return Ok(JsonConvert.SerializeObject(courses,new JsonSerializerSettings { 
                 MaxDepth=2,
                 ReferenceLoopHandling=ReferenceLoopHandling.Ignore
             }));*/
         }
 
-        [HttpPost("releaseCource")]
-        //TODO 代课单——发布
-        public async Task<IActionResult> ReleaseCource(
-            [FromForm] string userID,
-            [FromForm] string CourceData)
+        [HttpPost("getpublishedcourse")]
+        public async Task<IActionResult> GetPublishedCourse(
+            [FromForm] string userID)
         {
-            await infoService.ReleaseCource(userID,CourceData);
+            var courses = await infoService.GetMyPublishedCourse(userID);
+            return Ok();
+        }
+
+        [HttpPost("GetReceivedCourse")]
+        public async Task<IActionResult> GetReceivedCourse(
+            [FromForm] string userID)
+        {
+            return Ok();
+        }
+
+        [HttpPost("releaseCourse")]
+        //TODO 代课单——发布
+        public async Task<IActionResult> ReleaseCourse(
+            [FromForm] string userID,
+            [FromForm] string CourseData)
+        {
+            await infoService.ReleaseCourse(userID, CourseData);
             return Ok();
         }
 
         //TODO 代课单——收藏
-        [HttpPost("likeCource")]
-        public async Task<IActionResult> LikeCource(
+        [HttpPost("likeCourse")]
+        public async Task<IActionResult> LikeCourse(
             [FromForm] string userID,
-            [FromForm] int courceID)
+            [FromForm] int courseID)
         {
 
             return Ok();
         }
 
         //TODO 代课单——接收
-        [HttpPost("receiveCource")]
-        public async Task<IActionResult> ReceiveCource(string submitData)
+        [HttpPost("receiveCourse")]
+        public async Task<IActionResult> ReceiveCourse(
+            [FromForm] string userID,
+            [FromForm] int objectID)
         {
-            
+            await infoService.ReceiveCourse(userID, objectID);
             return Ok();
         }
 

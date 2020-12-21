@@ -1,6 +1,6 @@
 ﻿using API_SERVER.Data;
 using API_SERVER.Models.Datas;
-using API_SERVER.Models.Datas.CourceData;
+using API_SERVER.Models.Datas.CourseData;
 using API_SERVER.Models.Datas.FleaData;
 using API_SERVER.Models.Users;
 using Microsoft.EntityFrameworkCore;
@@ -22,28 +22,28 @@ namespace API_SERVER.Services
         }
 
         private DbSet<PersonalData> UserDataDb { get { return dataContext.UserDataDb; } }
-        private DbSet<CourceModel> courceObjectsDb { get { return dataContext.courceObjectsDb; } }
+        private DbSet<CourseModel> courseObjectsDb { get { return dataContext.courseObjectsDb; } }
         private DbSet<FleaObjectModel> fleaObjectsDb { get { return dataContext.fleaObjectsDb; } }
 
-        public async Task<List<CourceModel>> GetRandomCource()
+        public async Task<List<CourseModel>> GetRandomCourse()
         {
-            return courceObjectsDb.Include(p => p.likedUserID).Include(p => p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
+            return courseObjectsDb.Include(p => p.likedUserID).Include(p => p.sponsorData).Include(p => p.receiverData).Where(p => p.receiver == null).OrderBy(r => r.createTime).Take(10).ToList();
         }
 
         //TODO 代课单——发布
-        public async Task ReleaseCource(string userID, string courseData)
+        public async Task ReleaseCourse(string userID, string courseData)
         {
             try
             {
-                CourceModel obj = JsonSerializer.Deserialize<CourceModel>(courseData);
+                CourseModel obj = JsonSerializer.Deserialize<CourseModel>(courseData);
                 TimeSpan timeSpan = new TimeSpan(08, 00, 00);
                 TimeZoneInfo timeZone = TimeZoneInfo.CreateCustomTimeZone("China",
                                                                            timeSpan,
                                                                            "China", null);
                 obj.createTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, timeZone);
-                PersonalData user = UserDataDb.Include(p => p.courceObjects_Launched).Single<PersonalData>(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courseObjects_Launched).Single<PersonalData>(p => p.userID == userID);
                 //obj.sponsor = user;
-                user.courceObjects_Launched.Add(obj);
+                user.courseObjects_Launched.Add(obj);
 
                 //fleaObjectsDb.Add(obj);
                 UserDataDb.Update(user);
@@ -56,15 +56,15 @@ namespace API_SERVER.Services
         }
 
         //TODO 代课单——收藏
-        public async Task LikeCource(string userID, int courceID)
+        public async Task LikeCourse(string userID, int courseID)
         {
             try
             {
-                PersonalData user = UserDataDb.Include(p => p.courceObjects_Liked).Single(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courseObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
-                CourceModel cource = courceObjectsDb.Single(p => p.orderID == courceID);
-                if (cource == null) return;
-                user.courceObjects_Liked.Add(cource);
+                CourseModel course = courseObjectsDb.Single(p => p.orderID == courseID);
+                if (course == null) return;
+                user.courseObjects_Liked.Add(course);
                 UserDataDb.Update(user);
                 dataContext.SaveChanges();
             }
@@ -74,15 +74,24 @@ namespace API_SERVER.Services
             }
         }
 
-        public async Task CancelCourceLiked(string userID, int courceID)
+        public async Task<List<CourseModel>> GetMyPublishedCourse(string userID)
+        {
+            return courseObjectsDb.Include(p => p.sponsorData).Where(p => p.sponsorData.userID == userID).ToList();
+        }
+
+        public async Task<List<CourseModel>> GetMyReceivedCourse(string userID)
+        {
+            return courseObjectsDb.Include(p => p.receiverData).Where(p => p.receiverData.userID == userID).ToList();
+        }
+        public async Task CancelCourseLiked(string userID, int courseID)
         {
             try
             {
-                PersonalData user = UserDataDb.Include(p => p.courceObjects_Liked).Single(p => p.userID == userID);
+                PersonalData user = UserDataDb.Include(p => p.courseObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
-                CourceModel fleaObject = user.courceObjects_Liked.Single(p => p.orderID == courceID);
+                CourseModel fleaObject = user.courseObjects_Liked.Single(p => p.orderID == courseID);
                 if (fleaObject == null) return;
-                user.courceObjects_Liked.Remove(fleaObject);
+                user.courseObjects_Liked.Remove(fleaObject);
                 UserDataDb.Update(user);
                 await dataContext.SaveChangesAsync();
             }
@@ -93,9 +102,19 @@ namespace API_SERVER.Services
         }
 
         //TODO 代课单——接收
-        public async Task ReceiveCource(string userID, int objectID)
+        public async Task ReceiveCourse(string userID, int objectID)
         {
+            if (courseObjectsDb.Where(p => p.orderID == objectID).Count() != 0&& UserDataDb.Where(i => i.userID == userID).Count() != 0)
+            {
+                var cource = courseObjectsDb.Single(i => i.orderID == objectID);
+                var user = UserDataDb.Single(i => i.userID == userID);
+                dataContext.Entry(user).State = EntityState.Detached;
+                user.courseObjects_Received.Add(cource);
 
+                UserDataDb.Update(user);
+
+                await dataContext.SaveChangesAsync();
+            }
         }
 
         //返回随机二手物品
