@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_SERVER.Migrations.UserData
 {
-    public partial class UserData : Migration
+    public partial class UserDate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,7 +27,7 @@ namespace API_SERVER.Migrations.UserData
                 });
 
             migrationBuilder.CreateTable(
-                name: "courceObjectsDb",
+                name: "courseObjectsDb",
                 columns: table => new
                 {
                     orderID = table.Column<int>(type: "int", nullable: false)
@@ -45,15 +45,15 @@ namespace API_SERVER.Migrations.UserData
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_courceObjectsDb", x => x.orderID);
+                    table.PrimaryKey("PK_courseObjectsDb", x => x.orderID);
                     table.ForeignKey(
-                        name: "FK_courceObjectsDb_UserDataDb_receiver",
+                        name: "FK_courseObjectsDb_UserDataDb_receiver",
                         column: x => x.receiver,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_courceObjectsDb_UserDataDb_sponsor",
+                        name: "FK_courseObjectsDb_UserDataDb_sponsor",
                         column: x => x.sponsor,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
@@ -93,23 +93,23 @@ namespace API_SERVER.Migrations.UserData
                 });
 
             migrationBuilder.CreateTable(
-                name: "CourceModelPersonalData",
+                name: "CourseModelPersonalData",
                 columns: table => new
                 {
-                    courceObjects_LikedorderID = table.Column<int>(type: "int", nullable: false),
+                    courseObjects_LikedorderID = table.Column<int>(type: "int", nullable: false),
                     likedUserIDuserID = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CourceModelPersonalData", x => new { x.courceObjects_LikedorderID, x.likedUserIDuserID });
+                    table.PrimaryKey("PK_CourseModelPersonalData", x => new { x.courseObjects_LikedorderID, x.likedUserIDuserID });
                     table.ForeignKey(
-                        name: "FK_CourceModelPersonalData_courceObjectsDb_courceObjects_LikedorderID",
-                        column: x => x.courceObjects_LikedorderID,
-                        principalTable: "courceObjectsDb",
+                        name: "FK_CourseModelPersonalData_courseObjectsDb_courseObjects_LikedorderID",
+                        column: x => x.courseObjects_LikedorderID,
+                        principalTable: "courseObjectsDb",
                         principalColumn: "orderID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CourceModelPersonalData_UserDataDb_likedUserIDuserID",
+                        name: "FK_CourseModelPersonalData_UserDataDb_likedUserIDuserID",
                         column: x => x.likedUserIDuserID,
                         principalTable: "UserDataDb",
                         principalColumn: "userID",
@@ -163,18 +163,18 @@ namespace API_SERVER.Migrations.UserData
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CourceModelPersonalData_likedUserIDuserID",
-                table: "CourceModelPersonalData",
+                name: "IX_CourseModelPersonalData_likedUserIDuserID",
+                table: "CourseModelPersonalData",
                 column: "likedUserIDuserID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_courceObjectsDb_receiver",
-                table: "courceObjectsDb",
+                name: "IX_courseObjectsDb_receiver",
+                table: "courseObjectsDb",
                 column: "receiver");
 
             migrationBuilder.CreateIndex(
-                name: "IX_courceObjectsDb_sponsor",
-                table: "courceObjectsDb",
+                name: "IX_courseObjectsDb_sponsor",
+                table: "courseObjectsDb",
                 column: "sponsor");
 
             migrationBuilder.CreateIndex(
@@ -201,7 +201,7 @@ namespace API_SERVER.Migrations.UserData
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CourceModelPersonalData");
+                name: "CourseModelPersonalData");
 
             migrationBuilder.DropTable(
                 name: "FleaObjectModelPersonalData");
@@ -210,7 +210,7 @@ namespace API_SERVER.Migrations.UserData
                 name: "Picture");
 
             migrationBuilder.DropTable(
-                name: "courceObjectsDb");
+                name: "courseObjectsDb");
 
             migrationBuilder.DropTable(
                 name: "fleaObjectsDb");

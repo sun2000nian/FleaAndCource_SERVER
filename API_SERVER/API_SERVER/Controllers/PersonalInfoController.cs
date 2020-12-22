@@ -102,7 +102,7 @@ namespace API_SERVER.Controllers
             [FromForm] string userID,
             [FromForm] int courseID)
         {
-
+            await infoService.LikeCourse(userID, courseID);
             return Ok();
         }
 

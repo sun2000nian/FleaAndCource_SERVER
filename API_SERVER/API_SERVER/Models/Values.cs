@@ -7,6 +7,13 @@ namespace API_SERVER.Models
 {
     public class Values
     {
+        public enum MessagesDir
+        {
+            OrderReceivedBySomeOne,
+            Accepted,
+            Refused,
+            Closed
+        }
         public enum Cource_TimeType
         {
             TimeRange,

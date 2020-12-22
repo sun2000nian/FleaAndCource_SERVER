@@ -34,6 +34,7 @@ namespace API_SERVER.Models.Users
         public ICollection<FleaObjectModel> fleaObjects_Launched { get; set; }
         public ICollection<FleaObjectModel> fleaObjects_Received { get; set; }
         public ICollection<FleaObjectModel> fleaObjects_Liked { get; set; }
-
+        //public ICollection<CourseModel> courceMessages { get; set; }
+        //public ICollection<FleaObjectModel> FleaMessages { get; set; }
     }
 }

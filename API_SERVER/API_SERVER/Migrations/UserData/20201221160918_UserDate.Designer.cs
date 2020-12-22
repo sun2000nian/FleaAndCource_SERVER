@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_SERVER.Migrations.UserData
 {
     [DbContext(typeof(UserDataContext))]
-    [Migration("20201219151614_UserData")]
-    partial class UserData
+    [Migration("20201221160918_UserDate")]
+    partial class UserDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace API_SERVER.Migrations.UserData
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.CourceData.CourceModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.CourseData.CourseModel", b =>
                 {
                     b.Property<int>("orderID")
                         .ValueGeneratedOnAdd()
@@ -64,7 +64,7 @@ namespace API_SERVER.Migrations.UserData
 
                     b.HasIndex("sponsor");
 
-                    b.ToTable("courceObjectsDb");
+                    b.ToTable("courseObjectsDb");
                 });
 
             modelBuilder.Entity("API_SERVER.Models.Datas.FleaData.FleaObjectModel", b =>
@@ -167,19 +167,19 @@ namespace API_SERVER.Migrations.UserData
                     b.ToTable("UserDataDb");
                 });
 
-            modelBuilder.Entity("CourceModelPersonalData", b =>
+            modelBuilder.Entity("CourseModelPersonalData", b =>
                 {
-                    b.Property<int>("courceObjects_LikedorderID")
+                    b.Property<int>("courseObjects_LikedorderID")
                         .HasColumnType("int");
 
                     b.Property<string>("likedUserIDuserID")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("courceObjects_LikedorderID", "likedUserIDuserID");
+                    b.HasKey("courseObjects_LikedorderID", "likedUserIDuserID");
 
                     b.HasIndex("likedUserIDuserID");
 
-                    b.ToTable("CourceModelPersonalData");
+                    b.ToTable("CourseModelPersonalData");
                 });
 
             modelBuilder.Entity("FleaObjectModelPersonalData", b =>
@@ -197,15 +197,15 @@ namespace API_SERVER.Migrations.UserData
                     b.ToTable("FleaObjectModelPersonalData");
                 });
 
-            modelBuilder.Entity("API_SERVER.Models.Datas.CourceData.CourceModel", b =>
+            modelBuilder.Entity("API_SERVER.Models.Datas.CourseData.CourseModel", b =>
                 {
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "receiverData")
-                        .WithMany("courceObjects_Received")
+                        .WithMany("courseObjects_Received")
                         .HasForeignKey("receiver")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("API_SERVER.Models.Users.PersonalData", "sponsorData")
-                        .WithMany("courceObjects_Launched")
+                        .WithMany("courseObjects_Launched")
                         .HasForeignKey("sponsor")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -236,11 +236,11 @@ namespace API_SERVER.Migrations.UserData
                         .HasForeignKey("FleaObjectModelorderID");
                 });
 
-            modelBuilder.Entity("CourceModelPersonalData", b =>
+            modelBuilder.Entity("CourseModelPersonalData", b =>
                 {
-                    b.HasOne("API_SERVER.Models.Datas.CourceData.CourceModel", null)
+                    b.HasOne("API_SERVER.Models.Datas.CourseData.CourseModel", null)
                         .WithMany()
-                        .HasForeignKey("courceObjects_LikedorderID")
+                        .HasForeignKey("courseObjects_LikedorderID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -273,9 +273,9 @@ namespace API_SERVER.Migrations.UserData
 
             modelBuilder.Entity("API_SERVER.Models.Users.PersonalData", b =>
                 {
-                    b.Navigation("courceObjects_Launched");
+                    b.Navigation("courseObjects_Launched");
 
-                    b.Navigation("courceObjects_Received");
+                    b.Navigation("courseObjects_Received");
 
                     b.Navigation("fleaObjects_Launched");
 

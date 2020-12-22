@@ -62,11 +62,12 @@ namespace API_SERVER.Services
             {
                 PersonalData user = UserDataDb.Include(p => p.courseObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
+                //dataContext.Entry(user).State = EntityState.Detached;
                 CourseModel course = courseObjectsDb.Single(p => p.orderID == courseID);
                 if (course == null) return;
                 user.courseObjects_Liked.Add(course);
                 UserDataDb.Update(user);
-                dataContext.SaveChanges();
+                await dataContext.SaveChangesAsync();
             }
             catch (Exception e)
             {
@@ -89,6 +90,7 @@ namespace API_SERVER.Services
             {
                 PersonalData user = UserDataDb.Include(p => p.courseObjects_Liked).Single(p => p.userID == userID);
                 if (user == null) return;
+                //dataContext.Entry(user).State = EntityState.Detached;
                 CourseModel fleaObject = user.courseObjects_Liked.Single(p => p.orderID == courseID);
                 if (fleaObject == null) return;
                 user.courseObjects_Liked.Remove(fleaObject);
@@ -106,10 +108,10 @@ namespace API_SERVER.Services
         {
             if (courseObjectsDb.Where(p => p.orderID == objectID).Count() != 0&& UserDataDb.Where(i => i.userID == userID).Count() != 0)
             {
-                var cource = courseObjectsDb.Single(i => i.orderID == objectID);
-                var user = UserDataDb.Single(i => i.userID == userID);
+                var course = courseObjectsDb.Single(i => i.orderID == objectID);
+                var user = UserDataDb.Include(p=>p.courseObjects_Received).Single(i => i.userID == userID);
                 dataContext.Entry(user).State = EntityState.Detached;
-                user.courseObjects_Received.Add(cource);
+                user.courseObjects_Received.Add(course);
 
                 UserDataDb.Update(user);
 
